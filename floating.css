@@ -3,32 +3,58 @@
 
 /* ===== CSS VARIABLES ===== */
 :root {
-  --ql-bg: #090514;
-  --ql-bg-elevated: #120a24;
-  --ql-bg-surface: #18102e;
-  --ql-bg-hover: #24133f;
-  --ql-border: rgba(205,72,255,0.26);
-  --ql-border-hover: rgba(96,214,232,0.40);
-  --ql-text-primary: #f4f4f5;
-  --ql-text-secondary: #a1a1aa;
-  --ql-text-muted: #71717a;
-  --ql-accent: #d946ef;
-  --ql-accent-hover: #67e8f9;
-  --ql-accent-glow: rgba(217,70,239,0.34);
-  --ql-accent-subtle: rgba(217,70,239,0.12);
-  --ql-success: #34d399;
-  --ql-success-bg: rgba(52,211,153,0.08);
-  --ql-warning: #fbbf24;
-  --ql-warning-bg: rgba(251,191,36,0.08);
-  --ql-danger: #f87171;
-  --ql-danger-bg: rgba(248,113,113,0.08);
+  --ql-bg: #080e1a;
+  --ql-bg-elevated: #0c1a2e;
+  --ql-bg-surface: #11223a;
+  --ql-bg-hover: #1a3050;
+  --ql-border: rgba(14,165,233,0.25);
+  --ql-border-hover: rgba(56,189,248,0.45);
+  --ql-text-primary: #f0f9ff;
+  --ql-text-secondary: #7dd3fc;
+  --ql-text-muted: #6b8fae;
+  --ql-accent: #0ea5e9;
+  --ql-accent-hover: #38bdf8;
+  --ql-accent-glow: rgba(14,165,233,0.35);
+  --ql-accent-subtle: rgba(14,165,233,0.13);
+  --ql-success: #10b981;
+  --ql-success-bg: rgba(16,185,129,0.08);
+  --ql-warning: #f59e0b;
+  --ql-warning-bg: rgba(245,158,11,0.08);
+  --ql-danger: #f43f5e;
+  --ql-danger-bg: rgba(244,63,94,0.08);
   --ql-radius: 16px;
   --ql-radius-sm: 10px;
   --ql-radius-xs: 8px;
   --ql-shadow: 0 24px 80px -12px rgba(0,0,0,0.6), 0 0 0 1px var(--ql-border);
   --ql-shadow-hover: 0 32px 100px -12px rgba(0,0,0,0.7), 0 0 0 1px var(--ql-border-hover);
-  --ql-transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --ql-glass: rgba(17,17,19,0.85);
+  --ql-transition: 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ql-glass: rgba(8,14,26,0.85);
+}
+
+/* ===== GLOBAL BOUNCE + GLOW KEYFRAMES ===== */
+@keyframes ql-glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px var(--ql-accent-glow); }
+  50% { box-shadow: 0 0 20px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15); }
+}
+
+#ql-floating button,
+#ql-floating .ql-btn,
+#ql-floating .ql-chip {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+#ql-floating button:hover,
+#ql-floating .ql-btn:hover,
+#ql-floating .ql-chip:hover {
+  transform: translateY(-2px) scale(1.03);
+  animation: ql-glow-pulse 1.8s ease-in-out infinite;
+}
+#ql-floating button:active,
+#ql-floating .ql-btn:active,
+#ql-floating .ql-chip:active {
+  transform: translateY(0) scale(0.97);
 }
 
 /* ===== MAIN CONTAINER ===== */
@@ -165,6 +191,7 @@
 .ql-icon-btn:hover {
   background: var(--ql-bg-hover);
   color: var(--ql-text-primary);
+  box-shadow: 0 0 12px var(--ql-accent-glow);
 }
 
 /* ===== NOTIFICATION BADGE ===== */
@@ -317,7 +344,7 @@
   padding: 10px 36px;
   border: none;
   border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, #d946ef, #7c3aed 48%, #67e8f9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: #fff;
   font-size: 13px;
   font-weight: 700;
@@ -326,8 +353,8 @@
   box-shadow: 0 4px 16px var(--ql-accent-glow);
 }
 .ql-alert-ok-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px var(--ql-accent-glow);
+  box-shadow: 0 8px 24px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
+  filter: brightness(1.15);
 }
 
 /* ===== PLAN MODE MODAL ===== */
@@ -443,16 +470,16 @@
   padding: 10px;
   border: none;
   border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, var(--ql-accent), var(--ql-accent-hover));
-  color: var(--ql-text-primary);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
+  color: #fff;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
   transition: all var(--ql-transition);
 }
 .ql-modo-plano-btn:hover {
-  box-shadow: 0 0 20px -4px var(--ql-accent-glow);
-  transform: translateY(-1px);
+  box-shadow: 0 0 20px -4px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
+  filter: brightness(1.15);
 }
 
 /* ===== BODY ===== */
@@ -680,10 +707,8 @@
 }
 .ql-tool-btn:hover {
   background: var(--ql-accent-subtle);
-  border-color: rgba(124,90,255,0.2);
+  border-color: var(--ql-accent);
   color: var(--ql-accent);
-  box-shadow: 0 0 12px var(--ql-accent-glow);
-  transform: translateY(-1px);
 }
 .ql-tool-btn:disabled {
   opacity: 0.35;
@@ -735,12 +760,10 @@
   letter-spacing: -0.01em;
 }
 .ql-send-btn:hover {
-  box-shadow: 0 6px 24px var(--ql-accent-glow);
-  transform: translateY(-1px);
-  filter: brightness(1.1);
+  box-shadow: 0 6px 24px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
+  filter: brightness(1.15);
 }
 .ql-send-btn:active {
-  transform: translateY(0);
   filter: brightness(0.95);
 }
 .ql-send-btn.ql-sending,
@@ -846,10 +869,8 @@
 }
 .ql-chip:hover {
   background: var(--ql-accent-subtle);
-  border-color: rgba(124,90,255,0.2);
-  color: #c4b5fd;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px var(--ql-accent-glow);
+  border-color: var(--ql-accent);
+  color: var(--ql-text-secondary);
 }
 
 /* ===== LICENSE GATE ===== */
@@ -896,9 +917,8 @@
   letter-spacing: -0.01em;
 }
 #ql-validate-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 28px var(--ql-accent-glow);
-  filter: brightness(1.1);
+  box-shadow: 0 8px 28px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
+  filter: brightness(1.15);
 }
 
 /* ===== FOOTER ===== */
@@ -1027,13 +1047,13 @@
   transition: all 0.2s ease;
 }
 .ql-sweetalert-btn-primary {
-  background: linear-gradient(135deg, #d946ef, #7c3aed 48%, #67e8f9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: #fff;
   box-shadow: 0 4px 15px var(--ql-accent-glow);
 }
 .ql-sweetalert-btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px var(--ql-accent-glow);
+  box-shadow: 0 6px 20px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.12);
+  filter: brightness(1.15);
 }
 .ql-sweetalert-btn-secondary {
   background: rgba(255,255,255,0.06);
@@ -1080,19 +1100,19 @@
 
 /* ===== LIGHT MODE ===== */
 #ql-floating.ql-light {
-  --ql-bg: #f1f5f9;
+  --ql-bg: #f0f9ff;
   --ql-bg-elevated: #ffffff;
   --ql-bg-surface: #f8fafc;
-  --ql-bg-hover: #e2e8f0;
-  --ql-border: rgba(15,23,42,0.12);
-  --ql-border-hover: rgba(15,23,42,0.22);
-  --ql-text-primary: #0f172a;
-  --ql-text-secondary: #475569;
-  --ql-text-muted: #94a3b8;
-  --ql-accent: #a855f7;
-  --ql-accent-hover: #7c3aed;
-  --ql-accent-subtle: rgba(168,85,247,0.10);
-  --ql-accent-glow: rgba(168,85,247,0.18);
+  --ql-bg-hover: #e0f2fe;
+  --ql-border: rgba(14,165,233,0.15);
+  --ql-border-hover: rgba(14,165,233,0.28);
+  --ql-text-primary: #0c4a6e;
+  --ql-text-secondary: #0284c7;
+  --ql-text-muted: #7dd3fc;
+  --ql-accent: #0ea5e9;
+  --ql-accent-hover: #0284c7;
+  --ql-accent-subtle: rgba(14,165,233,0.10);
+  --ql-accent-glow: rgba(14,165,233,0.20);
   --ql-success: #10b981;
   --ql-success-bg: rgba(16,185,129,0.10);
   --ql-warning: #d97706;
@@ -1166,7 +1186,7 @@
 .ql-buy-btn:hover {
   background: var(--ql-accent);
   color: #fff;
-  box-shadow: 0 4px 16px var(--ql-accent-glow);
+  box-shadow: 0 4px 16px var(--ql-accent-glow), 0 0 30px rgba(14,165,233,0.12);
 }
 
 .ql-pay-section { padding: 0; }
@@ -1311,6 +1331,7 @@
 .ql-pkg-select-btn:hover {
   background: var(--ql-accent);
   color: #fff;
+  box-shadow: 0 0 16px var(--ql-accent-glow);
 }
 
 .ql-selected-pkg {
@@ -1394,7 +1415,7 @@
   padding: 12px;
   border: none;
   border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, #d946ef, #7c3aed 48%, #67e8f9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: #fff;
   font-size: 14px;
   font-weight: 800;
@@ -1404,8 +1425,8 @@
   font-family: inherit;
 }
 .ql-confirm-pay-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px var(--ql-accent-glow);
+  box-shadow: 0 8px 24px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
+  filter: brightness(1.15);
 }
 .ql-confirm-pay-btn:disabled {
   opacity: 0.7;
@@ -1463,7 +1484,7 @@
 }
 .ql-attach-btn:hover {
   background: var(--ql-accent-subtle);
-  border-color: rgba(124,90,255,0.3);
+  border-color: var(--ql-accent);
   color: var(--ql-accent);
 }
 .ql-attach-count {
@@ -1592,12 +1613,10 @@
   transition: all var(--ql-transition);
 }
 .ql-watermark-btn:hover {
-  background: linear-gradient(135deg, rgba(248,113,113,0.15), rgba(248,113,113,0.08));
-  border-color: rgba(248,113,113,0.35);
-  box-shadow: 0 0 20px -4px rgba(248,113,113,0.2);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, rgba(248,113,113,0.18), rgba(248,113,113,0.1));
+  border-color: rgba(248,113,113,0.4);
+  box-shadow: 0 0 24px -4px rgba(248,113,113,0.25);
 }
-.ql-watermark-btn:active { transform: scale(0.98); }
 .ql-watermark-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 /* ===== SHIELD MODE BUTTON ===== */
@@ -1620,12 +1639,10 @@
   transition: all var(--ql-transition);
 }
 .ql-shield-btn:hover {
-  background: linear-gradient(135deg, rgba(124,90,255,0.15), rgba(124,90,255,0.08));
-  border-color: rgba(124,90,255,0.35);
-  box-shadow: 0 0 20px -4px rgba(124,90,255,0.2);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(14,165,233,0.08));
+  border-color: var(--ql-accent);
+  box-shadow: 0 0 24px -4px var(--ql-accent-glow);
 }
-.ql-shield-btn:active { transform: scale(0.98); }
 .ql-shield-btn.ql-shield-active {
   background: linear-gradient(135deg, rgba(52,211,153,0.12), rgba(52,211,153,0.06));
   border-color: rgba(52,211,153,0.3);
@@ -1634,7 +1651,7 @@
 .ql-shield-btn.ql-shield-active:hover {
   background: linear-gradient(135deg, rgba(52,211,153,0.18), rgba(52,211,153,0.1));
   border-color: rgba(52,211,153,0.45);
-  box-shadow: 0 0 20px -4px rgba(52,211,153,0.2);
+  box-shadow: 0 0 24px -4px rgba(16,185,129,0.25);
 }
 
 /* ===== SHIELD OVERLAY (injected on Lovable chat input) ===== */
@@ -1830,7 +1847,7 @@
   transition: all var(--ql-transition);
 }
 .ql-native-chat-btn:hover {
-  background: var(--ql-accent-glow);
+  background: var(--ql-accent-subtle);
   border-color: var(--ql-accent);
 }
 
@@ -2002,11 +2019,11 @@
 /* ===== LEGACY BRAND REFRESH ===== */
 #ql-floating {
   background:
-    radial-gradient(circle at 12% -10%, rgba(56,189,248,.24), transparent 34%),
-    radial-gradient(circle at 92% 8%, rgba(37,99,235,.26), transparent 32%),
-    linear-gradient(145deg, rgba(6,21,41,.98), rgba(7,28,54,.96));
-  border-color: rgba(56,189,248,.28);
-  box-shadow: 0 24px 80px -12px rgba(0,0,0,.62), 0 0 42px rgba(56,189,248,.16), inset 0 1px 0 rgba(255,255,255,.06);
+    radial-gradient(circle at 12% -10%, rgba(14,165,233,.22), transparent 34%),
+    radial-gradient(circle at 92% 8%, rgba(56,189,248,.18), transparent 32%),
+    linear-gradient(145deg, rgba(8,14,26,.98), rgba(12,26,46,.96));
+  border-color: rgba(14,165,233,.28);
+  box-shadow: 0 24px 80px -12px rgba(0,0,0,.62), 0 0 42px rgba(14,165,233,.16), inset 0 1px 0 rgba(255,255,255,.06);
 }
 #ql-floating::before {
   content: "";
@@ -2015,73 +2032,73 @@
   pointer-events: none;
   opacity: .38;
   background:
-    radial-gradient(ellipse at 20% 15%, rgba(34,211,238,.25), transparent 28%),
-    radial-gradient(ellipse at 80% 90%, rgba(59,130,246,.20), transparent 34%),
-    repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 1px, transparent 1px 18px);
+    radial-gradient(ellipse at 20% 15%, rgba(34,211,238,.22), transparent 28%),
+    radial-gradient(ellipse at 80% 90%, rgba(56,189,248,.18), transparent 34%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.050) 0 1px, transparent 1px 18px);
   animation: ql-master-wave 9s ease-in-out infinite alternate;
 }
 @keyframes ql-master-wave { from { transform: translate3d(-8px,-4px,0) scale(1); } to { transform: translate3d(8px,4px,0) scale(1.02); } }
 .ql-brand, .ql-header-left { display:flex; align-items:center; gap:8px; }
-.ql-brand-logo, .ql-title-logo { width:24px; height:24px; border-radius:8px; object-fit:cover; box-shadow:0 0 18px rgba(56,189,248,.42); }
+.ql-brand-logo, .ql-title-logo { width:24px; height:24px; border-radius:8px; object-fit:cover; box-shadow:0 0 18px rgba(14,165,233,.38); }
 .ql-title-logo { width:28px; height:28px; }
 .ql-license-gate, .ql-profile-card, .ql-template-card, .ql-input-area, .ql-notif-panel, .ql-history-panel {
-  background: linear-gradient(180deg, rgba(8,32,61,.82), rgba(6,21,41,.74));
-  border-color: rgba(56,189,248,.22);
+  background: linear-gradient(180deg, rgba(8,14,26,.82), rgba(12,26,46,.74));
+  border-color: rgba(14,165,233,.22);
 }
 #ql-validate-btn, #ql-send-btn, .ql-buy-btn, .ql-primary-btn {
-  background: linear-gradient(135deg, #d946ef, #7c3aed 55%, #67e8f9) !important;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 55%, #22d3ee) !important;
   color:#ffffff !important;
-  box-shadow: 0 14px 36px rgba(37,99,235,.28), 0 0 24px rgba(34,211,238,.16);
+  box-shadow: 0 14px 36px rgba(14,165,233,.28), 0 0 24px rgba(34,211,238,.16);
 }
 
-/* ===== LAST ZONE BRAND REFRESH ===== */
+/* ===== SUHAIB ABID BRAND REFRESH ===== */
 :root {
-  --ql-bg: #09090b !important;
-  --ql-bg-elevated: #110e1a !important;
-  --ql-bg-surface: #161320 !important;
-  --ql-bg-hover: #211c30 !important;
-  --ql-border: rgba(139, 92, 246, 0.25) !important;
-  --ql-border-hover: rgba(236, 72, 153, 0.45) !important;
-  --ql-text-primary: #f4f4f5 !important;
-  --ql-text-secondary: #c084fc !important;
-  --ql-text-muted: #8b8a9e !important;
-  --ql-accent: #a855f7 !important;
-  --ql-accent-hover: #d946ef !important;
-  --ql-accent-glow: rgba(168, 85, 247, 0.35) !important;
-  --ql-accent-subtle: rgba(168, 85, 247, 0.15) !important;
+  --ql-bg: #080e1a !important;
+  --ql-bg-elevated: #0c1a2e !important;
+  --ql-bg-surface: #11223a !important;
+  --ql-bg-hover: #1a3050 !important;
+  --ql-border: rgba(14,165,233,0.28) !important;
+  --ql-border-hover: rgba(56,189,248,0.50) !important;
+  --ql-text-primary: #f0f9ff !important;
+  --ql-text-secondary: #7dd3fc !important;
+  --ql-text-muted: #6b8fae !important;
+  --ql-accent: #0ea5e9 !important;
+  --ql-accent-hover: #38bdf8 !important;
+  --ql-accent-glow: rgba(14,165,233,0.38) !important;
+  --ql-accent-subtle: rgba(14,165,233,0.15) !important;
   --ql-success: #10b981 !important;
-  --ql-success-bg: rgba(16, 185, 129, 0.1) !important;
+  --ql-success-bg: rgba(16,185,129,0.1) !important;
   --ql-warning: #f59e0b !important;
-  --ql-warning-bg: rgba(245, 158, 11, 0.1) !important;
+  --ql-warning-bg: rgba(245,158,11,0.1) !important;
   --ql-danger: #f43f5e !important;
-  --ql-danger-bg: rgba(244, 63, 94, 0.1) !important;
+  --ql-danger-bg: rgba(244,63,94,0.1) !important;
   --ql-radius: 16px !important;
   --ql-radius-sm: 10px !important;
   --ql-radius-xs: 8px !important;
   --ql-shadow: 0 24px 80px -12px rgba(0,0,0,0.7), 0 0 0 1px var(--ql-border) !important;
   --ql-shadow-hover: 0 32px 100px -12px rgba(0,0,0,0.8), 0 0 0 1px var(--ql-border-hover) !important;
-  --ql-glass: rgba(9, 9, 11, 0.85) !important;
+  --ql-glass: rgba(8,14,26,0.85) !important;
 }
 
 #ql-floating {
   background:
-    radial-gradient(circle at 12% -10%, rgba(168,85,247,.22), transparent 34%),
-    radial-gradient(circle at 92% 8%, rgba(217,70,239,.18), transparent 32%),
-    linear-gradient(145deg, #09090b, #110e1a 58%, #09090b) !important;
+    radial-gradient(circle at 12% -10%, rgba(14,165,233,.20), transparent 34%),
+    radial-gradient(circle at 92% 8%, rgba(56,189,248,.16), transparent 32%),
+    linear-gradient(145deg, #080e1a, #0c1a2e 58%, #080e1a) !important;
   border-color: var(--ql-border) !important;
   box-shadow: var(--ql-shadow) !important;
 }
 
 #ql-floating::before {
   background:
-    radial-gradient(ellipse at 20% 15%, rgba(168,85,247,.22), transparent 28%),
-    radial-gradient(ellipse at 80% 90%, rgba(217,70,239,.18), transparent 34%),
-    repeating-linear-gradient(135deg, rgba(255,255,255,.045) 0 1px, transparent 1px 18px) !important;
+    radial-gradient(ellipse at 20% 15%, rgba(14,165,233,.20), transparent 28%),
+    radial-gradient(ellipse at 80% 90%, rgba(56,189,248,.16), transparent 34%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.040) 0 1px, transparent 1px 18px) !important;
 }
 
 .ql-brand-logo,
 .ql-title-logo {
-  box-shadow: 0 0 10px var(--ql-accent-glow) !important;
+  box-shadow: 0 0 12px var(--ql-accent-glow) !important;
 }
 
 .ql-license-gate,
@@ -2101,9 +2118,9 @@
 .ql-primary-btn,
 .ql-confirm-pay-btn,
 .ql-lang-btn.ql-lang-active {
-  background: linear-gradient(135deg, var(--ql-accent), var(--ql-accent-hover)) !important;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee) !important;
   color: #fff !important;
-  box-shadow: 0 4px 12px var(--ql-accent-glow) !important;
+  box-shadow: 0 4px 14px var(--ql-accent-glow) !important;
 }
 
 /* LAST_ZONE_LANG_GUARD */

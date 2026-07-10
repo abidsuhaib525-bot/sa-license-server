@@ -34,7 +34,7 @@
   var BRAND_NAME = "Suhaib Abid";
   var FOOTER_TEXT = "Suhaib Abid";
   var SUPPORT_URL = "https://t.me/+Dm8IppPh39s4YWIx";
-  var LICENSE_PLACEHOLDER = "LZ-XXXX-XXXX-XXXX";
+  var LICENSE_PLACEHOLDER = "SA-XXXX-XXXX-XXXX";
   var ROOT_SELECTOR = "#ql-panel,#ql-root,#ql-header,#ql-body,#ql-license-gate,.ql-license-gate,.ql-container,.ql-footer,.ql-modal,.ql-toast,.ql-alert,.ql-pay-modal,.ql-expired-modal,.ql-plan-mode-modal,.ql-notif-panel,.ql-notification-panel,.ql-shortcuts,.ql-history,.ql-login,.ql-popup,.sp-shell,.sp-root,.sp-panel,.sp-license-gate,#sp-body,.sp-header,.sp-footer,.sp-notif-panel";
   var AR_STATIC_TEXT = {
     "Activate License": "تفعيل الترخيص",
@@ -1590,7 +1590,7 @@
   var BRAND_NAME = "Suhaib Abid";
   var FOOTER_TEXT = "Suhaib Abid";
   var LOGO_SRC = "assets/logo-master-lovable-square.png";
-  var LICENSE_PLACEHOLDER = "LZ-XXXX-XXXX-XXXX";
+  var LICENSE_PLACEHOLDER = "SA-XXXX-XXXX-XXXX";
   var DEFAULT_REASON = "Please enter your license key again.";
   var STORAGE_REMOVE_KEYS = ["ql_license_key", "license_key", "ql_license_id", "ql_license_plan", "ql_user_name", "ql_user_email", "ql_expires_at", "ql_activated_at", "ql_synced_sessions", "ql_session_id", "ql_native_chat", "ql_bypass_active", "__ql_bypass_active", "ql_auth_token", "auth_token", "session_id"];
   function currentLang() {
@@ -1691,13 +1691,7 @@
       event.stopImmediatePropagation();
     } catch (err) {}
   }
-  document.addEventListener("click", function (event) {
-    if (!isLogoutTarget(event.target)) {
-      return;
-    }
-    stop(event);
-    // Ignore logout clicks
-  }, true);
+  // Logout clicks are handled by content.js and sidepanel.html
   function onInvalidState(reason) {
     // Stubbed to prevent invalid state behavior
   }

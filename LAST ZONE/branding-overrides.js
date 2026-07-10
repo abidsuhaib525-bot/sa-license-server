@@ -7,7 +7,7 @@
   var BRAND_NAME = "Suhaib Abid";
   var FOOTER_TEXT = "Suhaib Abid";
   var SUPPORT_URL = "https://t.me/+Dm8IppPh39s4YWIx";
-  var LICENSE_PLACEHOLDER = "LZ-XXXX-XXXX-XXXX";
+  var LICENSE_PLACEHOLDER = "SA-XXXX-XXXX-XXXX";
   var ALLOWED_LANGS = ["en", "ar"];
   var OLD_I18N = {
     en: {

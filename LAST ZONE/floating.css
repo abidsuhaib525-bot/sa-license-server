@@ -7,12 +7,12 @@
   --ql-bg-elevated: #120a24;
   --ql-bg-surface: #18102e;
   --ql-bg-hover: #24133f;
-  --ql-border: rgba(205,72,255,0.26);
+  --ql-border: rgba(14,165,233,0.26);
   --ql-border-hover: rgba(96,214,232,0.40);
   --ql-text-primary: #f4f4f5;
   --ql-text-secondary: #a1a1aa;
   --ql-text-muted: #71717a;
-  --ql-accent: #d946ef;
+  --ql-accent: #0ea5e9;
   --ql-accent-hover: #67e8f9;
   --ql-accent-glow: rgba(217,70,239,0.34);
   --ql-accent-subtle: rgba(217,70,239,0.12);
@@ -134,7 +134,7 @@
   font-weight: 800;
   padding: 3px 8px;
   border-radius: 6px;
-  background: linear-gradient(135deg, #d946ef, #7c3aed 48%, #67e8f9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: #fff;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -317,7 +317,7 @@
   padding: 10px 36px;
   border: none;
   border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, #d946ef, #7c3aed 48%, #67e8f9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: #fff;
   font-size: 13px;
   font-weight: 700;
@@ -582,11 +582,11 @@
 .ql-trial-bar-fill {
   height: 100%;
   border-radius: 6px;
-  background: linear-gradient(90deg, var(--ql-accent), #a78bfa, #d946ef);
+  background: linear-gradient(90deg, var(--ql-accent), #06b6d4, #22d3ee);
   background-size: 200% 100%;
   animation: ql-bar-shimmer 3s ease infinite;
   transition: width 1s ease;
-  box-shadow: 0 0 8px rgba(124, 90, 255, 0.4);
+  box-shadow: 0 0 8px rgba(14, 165, 233, 0.4);
 }
 
 .ql-trial-bar-fill.ql-bar-urgent {
@@ -680,7 +680,7 @@
 }
 .ql-tool-btn:hover {
   background: var(--ql-accent-subtle);
-  border-color: rgba(124,90,255,0.2);
+  border-color: rgba(14,165,233,0.2);
   color: var(--ql-accent);
   box-shadow: 0 0 12px var(--ql-accent-glow);
   transform: translateY(-1px);
@@ -725,7 +725,7 @@
   padding: 8px 22px;
   border: none;
   border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, #d946ef, #7c3aed 48%, #67e8f9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: #fff;
   font-size: 13px;
   font-weight: 700;
@@ -779,7 +779,7 @@
 }
 .ql-toggle input:checked + .ql-toggle-slider {
   background: var(--ql-accent-subtle);
-  border-color: rgba(124,90,255,0.3);
+  border-color: rgba(14,165,233,0.3);
 }
 .ql-toggle input:checked + .ql-toggle-slider::before {
   transform: translateX(16px);
@@ -846,7 +846,7 @@
 }
 .ql-chip:hover {
   background: var(--ql-accent-subtle);
-  border-color: rgba(124,90,255,0.2);
+  border-color: rgba(14,165,233,0.2);
   color: #c4b5fd;
   transform: translateY(-2px);
   box-shadow: 0 4px 16px var(--ql-accent-glow);
@@ -885,7 +885,7 @@
   padding: 12px;
   border: none;
   border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, #d946ef, #7c3aed 48%, #67e8f9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: white;
   font-size: 14px;
   font-weight: 700;
@@ -1027,7 +1027,7 @@
   transition: all 0.2s ease;
 }
 .ql-sweetalert-btn-primary {
-  background: linear-gradient(135deg, #d946ef, #7c3aed 48%, #67e8f9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: #fff;
   box-shadow: 0 4px 15px var(--ql-accent-glow);
 }
@@ -1089,10 +1089,10 @@
   --ql-text-primary: #0f172a;
   --ql-text-secondary: #475569;
   --ql-text-muted: #94a3b8;
-  --ql-accent: #a855f7;
-  --ql-accent-hover: #7c3aed;
-  --ql-accent-subtle: rgba(168,85,247,0.10);
-  --ql-accent-glow: rgba(168,85,247,0.18);
+  --ql-accent: #0ea5e9;
+  --ql-accent-hover: #06b6d4;
+  --ql-accent-subtle: rgba(14,165,233,0.10);
+  --ql-accent-glow: rgba(14,165,233,0.18);
   --ql-success: #10b981;
   --ql-success-bg: rgba(16,185,129,0.10);
   --ql-warning: #d97706;
@@ -1213,7 +1213,7 @@
   position: absolute;
   top: -8px;
   right: 12px;
-  background: linear-gradient(135deg, #d946ef, #7c3aed 48%, #67e8f9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: #fff;
   font-size: 9px;
   font-weight: 800;
@@ -1318,7 +1318,7 @@
   color: var(--ql-text-primary);
   padding: 10px 12px;
   background: var(--ql-accent-subtle);
-  border: 1px solid rgba(124,90,255,0.2);
+  border: 1px solid rgba(14,165,233,0.2);
   border-radius: var(--ql-radius-xs);
   margin-bottom: 14px;
 }
@@ -1394,7 +1394,7 @@
   padding: 12px;
   border: none;
   border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, #d946ef, #7c3aed 48%, #67e8f9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: #fff;
   font-size: 14px;
   font-weight: 800;
@@ -1437,7 +1437,7 @@
   display: block;
   background: var(--ql-accent-subtle);
   color: var(--ql-accent);
-  border: 1px solid rgba(124,90,255,0.2);
+  border: 1px solid rgba(14,165,233,0.2);
 }
 
 /* ===== FILE ATTACHMENT ===== */
@@ -1463,7 +1463,7 @@
 }
 .ql-attach-btn:hover {
   background: var(--ql-accent-subtle);
-  border-color: rgba(124,90,255,0.3);
+  border-color: rgba(14,165,233,0.3);
   color: var(--ql-accent);
 }
 .ql-attach-count {
@@ -1609,9 +1609,9 @@
   width: 100%;
   padding: 10px 16px;
   margin-top: 6px;
-  border: 1px solid rgba(124,90,255,0.2);
+  border: 1px solid rgba(14,165,233,0.2);
   border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, rgba(124,90,255,0.08), rgba(124,90,255,0.04));
+  background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(14,165,233,0.04));
   color: var(--ql-accent);
   font-size: 12px;
   font-weight: 600;
@@ -1620,9 +1620,9 @@
   transition: all var(--ql-transition);
 }
 .ql-shield-btn:hover {
-  background: linear-gradient(135deg, rgba(124,90,255,0.15), rgba(124,90,255,0.08));
-  border-color: rgba(124,90,255,0.35);
-  box-shadow: 0 0 20px -4px rgba(124,90,255,0.2);
+  background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(14,165,233,0.08));
+  border-color: rgba(14,165,233,0.35);
+  box-shadow: 0 0 20px -4px rgba(14,165,233,0.2);
   transform: translateY(-1px);
 }
 .ql-shield-btn:active { transform: scale(0.98); }
@@ -1650,8 +1650,8 @@
   border-radius: 24px;
   background: rgba(10,10,11,0.88);
   backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(124,90,255,0.3);
-  box-shadow: 0 0 40px -8px rgba(124,90,255,0.25), inset 0 0 60px -20px rgba(124,90,255,0.08);
+  border: 1.5px solid rgba(14,165,233,0.3);
+  box-shadow: 0 0 40px -8px rgba(14,165,233,0.25), inset 0 0 60px -20px rgba(14,165,233,0.08);
   cursor: not-allowed;
   animation: ql-shield-pulse 2.5s ease-in-out infinite;
   pointer-events: all;
@@ -1659,12 +1659,12 @@
 .ql-shield-overlay svg {
   width: 32px;
   height: 32px;
-  stroke: #7c5aff;
-  filter: drop-shadow(0 0 12px rgba(124,90,255,0.5));
+  stroke: #0ea5e9;
+  filter: drop-shadow(0 0 12px rgba(14,165,233,0.5));
   animation: ql-shield-icon-float 3s ease-in-out infinite;
 }
 .ql-shield-overlay-text {
-  color: #a78bfa;
+  color: var(--ql-accent);
   font-size: 13px;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
@@ -1677,8 +1677,8 @@
   font-family: 'Inter', sans-serif;
 }
 @keyframes ql-shield-pulse {
-  0%, 100% { border-color: rgba(124,90,255,0.3); box-shadow: 0 0 40px -8px rgba(124,90,255,0.25); }
-  50% { border-color: rgba(124,90,255,0.5); box-shadow: 0 0 60px -8px rgba(124,90,255,0.35); }
+  0%, 100% { border-color: rgba(14,165,233,0.3); box-shadow: 0 0 40px -8px rgba(14,165,233,0.25); }
+  50% { border-color: rgba(14,165,233,0.5); box-shadow: 0 0 60px -8px rgba(14,165,233,0.35); }
 }
 @keyframes ql-shield-icon-float {
   0%, 100% { transform: translateY(0); }
@@ -1713,7 +1713,7 @@
   transition: all var(--ql-transition);
 }
 .ql-tab:hover { background: rgba(255,255,255,0.04); color: var(--ql-text-secondary); }
-.ql-tab.ql-tab-active { background: var(--ql-accent-subtle); color: var(--ql-accent); border: 1px solid rgba(124,90,255,0.2); }
+.ql-tab.ql-tab-active { background: var(--ql-accent-subtle); color: var(--ql-accent); border: 1px solid rgba(14,165,233,0.2); }
 .ql-tab-badge {
   display: inline-flex;
   align-items: center;
@@ -1842,21 +1842,21 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  background: linear-gradient(135deg, #7c5aff, #a78bfa);
+  background: linear-gradient(135deg, #0ea5e9, var(--ql-accent));
   color: #fff;
   font-size: 10px;
   font-weight: 700;
   font-family: 'Inter', -apple-system, sans-serif;
   padding: 3px 10px;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(124,90,255,0.4);
+  box-shadow: 0 2px 12px rgba(14,165,233,0.4);
   letter-spacing: 0.3px;
   pointer-events: none;
   animation: ql-badge-pulse 2s ease-in-out infinite;
 }
 @keyframes ql-badge-pulse {
-  0%, 100% { box-shadow: 0 2px 12px rgba(124,90,255,0.4); }
-  50% { box-shadow: 0 2px 20px rgba(124,90,255,0.7); }
+  0%, 100% { box-shadow: 0 2px 12px rgba(14,165,233,0.4); }
+  50% { box-shadow: 0 2px 20px rgba(14,165,233,0.7); }
 }
 
 .ql-native-return-btn {
@@ -1866,10 +1866,10 @@
   gap: 6px;
   margin: 8px auto 0;
   padding: 6px 18px;
-  border: 1px solid rgba(124,90,255,0.3);
+  border: 1px solid rgba(14,165,233,0.3);
   border-radius: 20px;
-  background: rgba(124,90,255,0.1);
-  color: #a78bfa;
+  background: rgba(14,165,233,0.1);
+  color: var(--ql-accent);
   font-size: 12px;
   font-weight: 600;
   font-family: 'Inter', -apple-system, sans-serif;
@@ -1878,17 +1878,17 @@
   z-index: 99999;
 }
 .ql-native-return-btn:hover {
-  background: rgba(124,90,255,0.2);
-  border-color: rgba(124,90,255,0.5);
+  background: rgba(14,165,233,0.2);
+  border-color: rgba(14,165,233,0.5);
   transform: translateY(-1px);
 }
 
 @keyframes ql-send-blink {
-  0% { background-color: #7c5aff; }
+  0% { background-color: #0ea5e9; }
   25% { background-color: #ef4444; }
   50% { background-color: #22c55e; }
   75% { background-color: #eab308; }
-  100% { background-color: #7c5aff; }
+  100% { background-color: #0ea5e9; }
 }
 #chatinput-send-message-button.ql-native-send-active {
   animation: ql-send-blink 2s linear infinite !important;
@@ -1907,8 +1907,8 @@
   pointer-events: none !important;
 }
 @keyframes ql-sending-pulse {
-  0%, 100% { background-color: #a855f7 !important; transform: scale(1); }
-  50% { background-color: #7c3aed !important; transform: scale(1.15); }
+  0%, 100% { background-color: #0ea5e9 !important; transform: scale(1); }
+  50% { background-color: #06b6d4 !important; transform: scale(1.15); }
 }
 
 .ql-native-sending-overlay {
@@ -1922,12 +1922,12 @@
   gap: 8px;
   padding: 10px 20px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
   color: #fff;
   font-size: 13px;
   font-weight: 600;
   font-family: 'Segoe UI', sans-serif;
-  box-shadow: 0 4px 20px rgba(124,58,237,0.4);
+  box-shadow: 0 4px 20px rgba(14,165,233,0.4);
   animation: ql-sending-fadein 0.3s ease;
 }
 .ql-native-sending-overlay .ql-spinner {
@@ -1978,9 +1978,9 @@
   position: absolute;
   inset: 0;
   z-index: 99999;
-  background: rgba(124, 90, 255, 0.15);
+  background: rgba(14, 165, 233, 0.15);
   backdrop-filter: blur(6px);
-  border: 2px dashed rgba(124, 90, 255, 0.6);
+  border: 2px dashed rgba(14, 165, 233, 0.6);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -1995,7 +1995,7 @@
   background: rgba(10, 10, 11, 0.85);
   padding: 12px 24px;
   border-radius: 10px;
-  border: 1px solid rgba(124, 90, 255, 0.3);
+  border: 1px solid rgba(14, 165, 233, 0.3);
 }
 
 
@@ -2029,59 +2029,59 @@
   border-color: rgba(56,189,248,.22);
 }
 #ql-validate-btn, #ql-send-btn, .ql-buy-btn, .ql-primary-btn {
-  background: linear-gradient(135deg, #d946ef, #7c3aed 55%, #67e8f9) !important;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 55%, #67e8f9) !important;
   color:#ffffff !important;
   box-shadow: 0 14px 36px rgba(37,99,235,.28), 0 0 24px rgba(34,211,238,.16);
 }
 
-/* ===== LAST ZONE BRAND REFRESH ===== */
+/* ===== SUHAIB ABID BRAND REFRESH ===== */
 :root {
-  --ql-bg: #09090b !important;
-  --ql-bg-elevated: #110e1a !important;
-  --ql-bg-surface: #161320 !important;
-  --ql-bg-hover: #211c30 !important;
-  --ql-border: rgba(139, 92, 246, 0.25) !important;
-  --ql-border-hover: rgba(236, 72, 153, 0.45) !important;
-  --ql-text-primary: #f4f4f5 !important;
-  --ql-text-secondary: #c084fc !important;
-  --ql-text-muted: #8b8a9e !important;
-  --ql-accent: #a855f7 !important;
-  --ql-accent-hover: #d946ef !important;
-  --ql-accent-glow: rgba(168, 85, 247, 0.35) !important;
-  --ql-accent-subtle: rgba(168, 85, 247, 0.15) !important;
+  --ql-bg: #080e1a !important;
+  --ql-bg-elevated: #0c1a2e !important;
+  --ql-bg-surface: #11223a !important;
+  --ql-bg-hover: #1a3050 !important;
+  --ql-border: rgba(14,165,233,0.28) !important;
+  --ql-border-hover: rgba(56,189,248,0.50) !important;
+  --ql-text-primary: #f0f9ff !important;
+  --ql-text-secondary: #7dd3fc !important;
+  --ql-text-muted: #6b8fae !important;
+  --ql-accent: #0ea5e9 !important;
+  --ql-accent-hover: #38bdf8 !important;
+  --ql-accent-glow: rgba(14,165,233,0.38) !important;
+  --ql-accent-subtle: rgba(14,165,233,0.15) !important;
   --ql-success: #10b981 !important;
-  --ql-success-bg: rgba(16, 185, 129, 0.1) !important;
+  --ql-success-bg: rgba(16,185,129,0.1) !important;
   --ql-warning: #f59e0b !important;
-  --ql-warning-bg: rgba(245, 158, 11, 0.1) !important;
+  --ql-warning-bg: rgba(245,158,11,0.1) !important;
   --ql-danger: #f43f5e !important;
-  --ql-danger-bg: rgba(244, 63, 94, 0.1) !important;
+  --ql-danger-bg: rgba(244,63,94,0.1) !important;
   --ql-radius: 16px !important;
   --ql-radius-sm: 10px !important;
   --ql-radius-xs: 8px !important;
   --ql-shadow: 0 24px 80px -12px rgba(0,0,0,0.7), 0 0 0 1px var(--ql-border) !important;
   --ql-shadow-hover: 0 32px 100px -12px rgba(0,0,0,0.8), 0 0 0 1px var(--ql-border-hover) !important;
-  --ql-glass: rgba(9, 9, 11, 0.85) !important;
+  --ql-glass: rgba(8,14,26,0.85) !important;
 }
 
 #ql-floating {
   background:
-    radial-gradient(circle at 12% -10%, rgba(168,85,247,.22), transparent 34%),
-    radial-gradient(circle at 92% 8%, rgba(217,70,239,.18), transparent 32%),
-    linear-gradient(145deg, #09090b, #110e1a 58%, #09090b) !important;
+    radial-gradient(circle at 12% -10%, rgba(14,165,233,.20), transparent 34%),
+    radial-gradient(circle at 92% 8%, rgba(56,189,248,.16), transparent 32%),
+    linear-gradient(145deg, #080e1a, #0c1a2e 58%, #080e1a) !important;
   border-color: var(--ql-border) !important;
   box-shadow: var(--ql-shadow) !important;
 }
 
 #ql-floating::before {
   background:
-    radial-gradient(ellipse at 20% 15%, rgba(168,85,247,.22), transparent 28%),
-    radial-gradient(ellipse at 80% 90%, rgba(217,70,239,.18), transparent 34%),
-    repeating-linear-gradient(135deg, rgba(255,255,255,.045) 0 1px, transparent 1px 18px) !important;
+    radial-gradient(ellipse at 20% 15%, rgba(14,165,233,.20), transparent 28%),
+    radial-gradient(ellipse at 80% 90%, rgba(56,189,248,.16), transparent 34%),
+    repeating-linear-gradient(135deg, rgba(14,165,233,.06) 0 1px, transparent 1px 18px) !important;
 }
 
 .ql-brand-logo,
 .ql-title-logo {
-  box-shadow: 0 0 10px var(--ql-accent-glow) !important;
+  box-shadow: 0 0 12px var(--ql-accent-glow) !important;
 }
 
 .ql-license-gate,
@@ -2101,9 +2101,9 @@
 .ql-primary-btn,
 .ql-confirm-pay-btn,
 .ql-lang-btn.ql-lang-active {
-  background: linear-gradient(135deg, var(--ql-accent), var(--ql-accent-hover)) !important;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee) !important;
   color: #fff !important;
-  box-shadow: 0 4px 12px var(--ql-accent-glow) !important;
+  box-shadow: 0 4px 14px var(--ql-accent-glow) !important;
 }
 
 /* LAST_ZONE_LANG_GUARD */

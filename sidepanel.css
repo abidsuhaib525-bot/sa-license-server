@@ -307,8 +307,8 @@ body { animation: sp-fade-in 0.4s ease-out; }
 .sp-chat-empty-title { font-size: 14px; font-weight: 600; color: var(--ql-text-secondary); margin-bottom: 4px; }
 .sp-chat-empty-desc { font-size: 11px; line-height: 1.5; }
 
-.sp-chat-bubble { max-width: 88%; align-self: flex-end; background: linear-gradient(135deg, var(--ql-accent), #6d4aef); color: #fff; padding: 10px 14px; border-radius: 16px 16px 4px 16px; font-size: 12px; line-height: 1.5; word-wrap: break-word; white-space: pre-wrap; position: relative; animation: sp-msg-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 2px 8px rgba(124,90,255,0.2); }
-.sp-chat-bubble::after { content: ''; position: absolute; bottom: 0; right: -6px; width: 12px; height: 12px; background: #6d4aef; clip-path: polygon(0 0, 0% 100%, 100% 100%); }
+.sp-chat-bubble { max-width: 88%; align-self: flex-end; background: linear-gradient(135deg, var(--ql-accent), #06b6d4); color: #fff; padding: 10px 14px; border-radius: 16px 16px 4px 16px; font-size: 12px; line-height: 1.5; word-wrap: break-word; white-space: pre-wrap; position: relative; animation: sp-msg-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 2px 8px var(--ql-accent-glow); }
+.sp-chat-bubble::after { content: ''; position: absolute; bottom: 0; right: -6px; width: 12px; height: 12px; background: var(--ql-accent); clip-path: polygon(0 0, 0% 100%, 100% 100%); }
 
 @keyframes sp-msg-in {
   0% { opacity: 0; transform: translateY(12px) scale(0.92); }
@@ -341,9 +341,9 @@ body { animation: sp-fade-in 0.4s ease-out; }
   width: 100%;
   padding: 10px 16px;
   margin-top: 6px;
-  border: 1px solid rgba(124,90,255,0.2);
+  border: 1px solid var(--ql-border);
   border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, rgba(124,90,255,0.08), rgba(124,90,255,0.04));
+  background: var(--ql-accent-subtle);
   color: var(--ql-accent);
   font-size: 12px;
   font-weight: 600;
@@ -352,9 +352,9 @@ body { animation: sp-fade-in 0.4s ease-out; }
   transition: all var(--ql-transition);
 }
 .sp-shield-btn:hover {
-  background: linear-gradient(135deg, rgba(124,90,255,0.15), rgba(124,90,255,0.08));
-  border-color: rgba(124,90,255,0.35);
-  box-shadow: 0 0 20px -4px rgba(124,90,255,0.2);
+  background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(14,165,233,0.08));
+  border-color: var(--ql-accent);
+  box-shadow: 0 0 20px -4px var(--ql-accent-glow);
 }
 .sp-shield-btn.sp-shield-active {
   background: linear-gradient(135deg, rgba(52,211,153,0.12), rgba(52,211,153,0.06));
@@ -371,9 +371,9 @@ body { animation: sp-fade-in 0.4s ease-out; }
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: rgba(124, 90, 255, 0.15);
+  background: var(--ql-accent-subtle);
   backdrop-filter: blur(6px);
-  border: 2px dashed rgba(124, 90, 255, 0.6);
+  border: 2px dashed var(--ql-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -383,11 +383,11 @@ body { animation: sp-fade-in 0.4s ease-out; }
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #c4b5fd;
+  color: var(--ql-accent);
   background: rgba(10, 10, 11, 0.85);
   padding: 12px 24px;
   border-radius: 10px;
-  border: 1px solid rgba(124, 90, 255, 0.3);
+  border: 1px solid var(--ql-border);
 }
 
 
@@ -409,44 +409,44 @@ body {
   border-color: rgba(56,189,248,.22);
 }
 .sp-btn-primary, .sp-send-btn {
-  background: linear-gradient(135deg, #d946ef, #7c3aed 55%, #67e8f9) !important;
-  box-shadow: 0 14px 36px rgba(37,99,235,.28), 0 0 24px rgba(34,211,238,.16);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 55%, #22d3ee) !important;
+  box-shadow: 0 14px 36px rgba(37,99,235,.28), 0 0 24px var(--ql-accent-glow);
 }
 
-/* ===== LAST ZONE BRAND REFRESH ===== */
+/* ===== SUHAIB ABID BRAND REFRESH ===== */
 :root {
-  --ql-bg: #09090b !important;
-  --ql-bg-elevated: #110e1a !important;
-  --ql-bg-surface: #161320 !important;
-  --ql-bg-hover: #211c30 !important;
-  --ql-border: rgba(139, 92, 246, 0.25) !important;
-  --ql-border-hover: rgba(236, 72, 153, 0.45) !important;
-  --ql-text-primary: #f4f4f5 !important;
-  --ql-text-secondary: #c084fc !important;
-  --ql-text-muted: #8b8a9e !important;
-  --ql-accent: #a855f7 !important;
-  --ql-accent-hover: #d946ef !important;
-  --ql-accent-glow: rgba(168, 85, 247, 0.35) !important;
-  --ql-accent-subtle: rgba(168, 85, 247, 0.15) !important;
+  --ql-bg: #080e1a !important;
+  --ql-bg-elevated: #0c1a2e !important;
+  --ql-bg-surface: #11223a !important;
+  --ql-bg-hover: #1a3050 !important;
+  --ql-border: rgba(14,165,233,0.28) !important;
+  --ql-border-hover: rgba(56,189,248,0.50) !important;
+  --ql-text-primary: #f0f9ff !important;
+  --ql-text-secondary: #7dd3fc !important;
+  --ql-text-muted: #6b8fae !important;
+  --ql-accent: #0ea5e9 !important;
+  --ql-accent-hover: #38bdf8 !important;
+  --ql-accent-glow: rgba(14,165,233,0.38) !important;
+  --ql-accent-subtle: rgba(14,165,233,0.15) !important;
   --ql-success: #10b981 !important;
-  --ql-success-bg: rgba(16, 185, 129, 0.1) !important;
+  --ql-success-bg: rgba(16,185,129,0.1) !important;
   --ql-warning: #f59e0b !important;
-  --ql-warning-bg: rgba(245, 158, 11, 0.1) !important;
+  --ql-warning-bg: rgba(245,158,11,0.1) !important;
   --ql-danger: #f43f5e !important;
-  --ql-danger-bg: rgba(244, 63, 94, 0.1) !important;
+  --ql-danger-bg: rgba(244,63,94,0.1) !important;
   --ql-radius: 16px !important;
   --ql-radius-sm: 10px !important;
   --ql-radius-xs: 8px !important;
   --ql-shadow: 0 24px 80px -12px rgba(0,0,0,0.7), 0 0 0 1px var(--ql-border) !important;
   --ql-shadow-hover: 0 32px 100px -12px rgba(0,0,0,0.8), 0 0 0 1px var(--ql-border-hover) !important;
-  --ql-glass: rgba(9, 9, 11, 0.85) !important;
+  --ql-glass: rgba(8,14,26,0.85) !important;
 }
 
 body {
   background:
-    radial-gradient(circle at 8% -8%, rgba(168,85,247,.22), transparent 34%),
-    radial-gradient(circle at 90% 5%, rgba(217,70,239,.18), transparent 32%),
-    linear-gradient(145deg, #09090b, #110e1a 58%, #09090b) !important;
+    radial-gradient(circle at 8% -8%, rgba(14,165,233,.22), transparent 34%),
+    radial-gradient(circle at 90% 5%, rgba(56,189,248,.18), transparent 32%),
+    linear-gradient(145deg, #080e1a, #0c1a2e 58%, #080e1a) !important;
 }
 
 .sp-header {

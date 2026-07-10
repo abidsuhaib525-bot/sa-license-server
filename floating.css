@@ -1,7 +1,4 @@
-/* ===== SUHAIB ABID EXTENSION ===== */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-/* ===== CSS VARIABLES ===== */
+﻿@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 :root {
   --ql-bg: #080e1a;
   --ql-bg-elevated: #0c1a2e;
@@ -30,13 +27,10 @@
   --ql-transition: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   --ql-glass: rgba(8,14,26,0.80);
 }
-
-/* ===== GLOBAL SMOOTH INTERACTIONS ===== */
 @keyframes sa-glow-pulse {
   0%, 100% { box-shadow: 0 0 10px var(--ql-accent-glow); }
   50% { box-shadow: 0 0 24px var(--ql-accent-glow), 0 0 48px rgba(14,165,233,0.10); }
 }
-
 #ql-floating button,
 #ql-floating .ql-btn,
 #ql-floating .ql-chip {
@@ -57,12 +51,8 @@
 #ql-floating .ql-chip:active {
   transform: translateY(1px) scale(0.98);
 }
-
-/* ===== MAIN CONTAINER – BOTTOM-CENTER PILL ===== */
 #ql-floating {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
   z-index: 999999999;
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   border-radius: var(--ql-radius);
@@ -78,16 +68,12 @@
   -webkit-backdrop-filter: blur(24px);
   width: 420px;
 }
-
 #ql-floating:hover {
   box-shadow: var(--ql-shadow-hover);
 }
-
 #ql-floating * {
   box-sizing: border-box;
 }
-
-/* Ensure all interactive elements are clickable */
 #ql-floating button,
 #ql-floating input,
 #ql-floating textarea,
@@ -98,8 +84,6 @@
   position: relative;
   z-index: 1;
 }
-
-/* ===== MINIMIZED ===== */
 #ql-floating.ql-minimized {
   height: auto !important;
   min-height: 52px;
@@ -120,8 +104,6 @@
 #ql-floating:not(.ql-minimized) {
   transition: transform 0.3s var(--ql-transition), box-shadow var(--ql-transition), height 0.3s ease;
 }
-
-/* ===== HEADER ===== */
 #ql-header {
   cursor: move;
   padding: 12px 20px;
@@ -135,20 +117,17 @@
   touch-action: none;
   flex-shrink: 0;
 }
-
 .ql-header-left {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .ql-brand {
   font-size: 14px;
   font-weight: 600;
   color: var(--ql-text-primary);
   letter-spacing: -0.01em;
 }
-
 .ql-badge-pro-header {
   font-size: 8px;
   font-weight: 700;
@@ -160,14 +139,12 @@
   text-transform: uppercase;
   border: 1px solid var(--ql-border);
 }
-
 .ql-header-right {
   display: flex;
   align-items: center;
   gap: 4px;
   flex-shrink: 0;
 }
-
 .ql-icon-btn {
   width: 30px;
   height: 32px;
@@ -187,8 +164,6 @@
   background: var(--ql-accent-subtle);
   color: var(--ql-accent);
 }
-
-/* ===== NOTIFICATION BADGE ===== */
 .ql-notif-badge {
   position: absolute;
   top: -3px;
@@ -206,8 +181,6 @@
   line-height: 1;
   box-shadow: 0 0 6px rgba(239,68,68,0.4);
 }
-
-/* ===== NOTIFICATION PANEL ===== */
 .ql-notif-panel {
   position: absolute;
   top: 48px;
@@ -226,7 +199,6 @@
   from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 .ql-notif-header {
   display: flex;
   align-items: center;
@@ -293,8 +265,6 @@
   color: var(--ql-text-muted);
   margin-top: 6px;
 }
-
-/* ===== CUSTOM ALERT ===== */
 .ql-custom-alert {
   position: absolute;
   inset: 0;
@@ -350,8 +320,6 @@
   box-shadow: 0 8px 24px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
   filter: brightness(1.15);
 }
-
-/* ===== PLAN MODE MODAL ===== */
 .ql-modo-plano-overlay {
   position: absolute;
   inset: 0;
@@ -475,15 +443,11 @@
   box-shadow: 0 0 20px -4px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
   filter: brightness(1.15);
 }
-
-/* ===== BODY ===== */
 #ql-body {
   padding: 16px 20px;
   flex: 1;
   overflow-y: auto;
 }
-
-/* ===== PROFILE CARD ===== */
 .ql-profile-card {
   background: var(--ql-bg-elevated);
   border: 1px solid var(--ql-border);
@@ -495,27 +459,23 @@
 .ql-profile-card:hover {
   border-color: var(--ql-border-hover);
 }
-
 .ql-profile-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 6px;
 }
-
 .ql-profile-info {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .ql-profile-name {
   font-size: 13px;
   font-weight: 600;
   color: var(--ql-text-primary);
   letter-spacing: -0.01em;
 }
-
 .ql-status-badge {
   font-size: 8px;
   font-weight: 700;
@@ -524,36 +484,28 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-
 .ql-badge-test {
   background: var(--ql-warning-bg);
   color: var(--ql-warning);
   border: 1px solid rgba(251,191,36,0.15);
 }
-
 .ql-badge-pro {
   background: var(--ql-success-bg);
   color: var(--ql-success);
   border: 1px solid rgba(52,211,153,0.15);
 }
-
-/* ===== SYNC STATUS ===== */
 .ql-sync-status {
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 8px;
   padding: 0;
 }
-
 .ql-sync-ok .ql-sync-text {
   color: var(--ql-success);
 }
-
 .ql-sync-waiting .ql-sync-text {
   color: var(--ql-warning);
 }
-
-/* ===== TRIAL COUNTDOWN ===== */
 .ql-trial-countdown {
   display: flex;
   flex-direction: column;
@@ -564,14 +516,12 @@
   border: 1px solid var(--ql-border);
   margin-top: 8px;
 }
-
 .ql-countdown-row {
   display: flex;
   align-items: center;
   gap: 6px;
   font-size: 12px;
 }
-
 .ql-countdown-icon { font-size: 13px; }
 .ql-countdown-label {
   color: var(--ql-text-secondary);
@@ -590,7 +540,6 @@
   font-weight: 600;
   font-size: 12px;
 }
-
 .ql-trial-bar {
   width: 100%;
   height: 6px;
@@ -599,7 +548,6 @@
   overflow: hidden;
   position: relative;
 }
-
 .ql-trial-bar-fill {
   height: 100%;
   border-radius: 6px;
@@ -609,29 +557,23 @@
   transition: width 1s ease;
   box-shadow: 0 0 8px var(--ql-accent-glow);
 }
-
 .ql-trial-bar-fill.ql-bar-urgent {
   background: linear-gradient(90deg, #ef4444, #f97316);
   background-size: 200% 100%;
   animation: ql-bar-shimmer 1.5s ease infinite, ql-bar-pulse 2s ease-in-out infinite;
   box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
 }
-
 .ql-trial-bar-fill.ql-bar-expired {
   background: var(--ql-danger);
 }
-
 @keyframes ql-bar-shimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
-
 @keyframes ql-bar-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }
 }
-
-/* ===== TEXTAREA ===== */
 #ql-floating textarea {
   width: 100%;
   padding: 12px 16px;
@@ -650,17 +592,13 @@
   margin-bottom: 10px;
   line-height: 1.5;
 }
-
 #ql-floating textarea:focus {
   border-color: var(--ql-accent);
   box-shadow: 0 0 0 2px var(--ql-accent-subtle);
 }
-
 #ql-floating textarea::placeholder {
   color: var(--ql-text-muted);
 }
-
-/* ===== ACTION BAR ===== */
 .ql-action-bar {
   display: flex;
   align-items: center;
@@ -669,24 +607,20 @@
   padding: 0;
   gap: 8px;
 }
-
 .ql-action-left {
   display: flex;
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
 }
-
 .ql-action-center {
   display: flex;
   align-items: center;
   gap: 4px;
 }
-
 .ql-action-right-send {
   flex-shrink: 0;
 }
-
 .ql-tool-btn {
   width: 34px;
   height: 34px;
@@ -710,8 +644,6 @@
   cursor: not-allowed;
   transform: none;
 }
-
-/* Tool button loading */
 .ql-tool-loading {
   animation: sa-spin 0.8s linear infinite;
 }
@@ -719,8 +651,6 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-/* Recording indicator */
 .ql-recording {
   background: var(--ql-danger-bg) !important;
   border-color: rgba(248,113,113,0.3) !important;
@@ -731,7 +661,6 @@
   0%, 100% { box-shadow: 0 0 0 0 rgba(248,113,113,0.3); }
   50% { box-shadow: 0 0 0 8px rgba(248,113,113,0); }
 }
-
 .ql-toggle-label-inline {
   font-size: 10px;
   font-weight: 600;
@@ -739,8 +668,6 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
-
-/* ===== SEND BUTTON ===== */
 .ql-send-btn {
   padding: 8px 24px;
   border: none;
@@ -766,8 +693,6 @@
   opacity: 0.5;
   pointer-events: none;
 }
-
-/* ===== TOGGLE ===== */
 .ql-toggle {
   position: relative;
   width: 36px;
@@ -804,8 +729,6 @@
   background: var(--ql-accent);
   box-shadow: 0 0 8px var(--ql-accent-glow);
 }
-
-/* ===== LOG ===== */
 #ql-log, #ql-license-log {
   font-size: 12px;
   margin-top: 10px;
@@ -817,12 +740,9 @@
 .ql-log-success { color: var(--ql-success) !important; }
 .ql-log-error { color: var(--ql-danger) !important; }
 .ql-log-info { color: var(--ql-accent) !important; }
-
-/* ===== SHORTCUTS ===== */
 .ql-shortcuts-section {
   margin-top: 8px;
 }
-
 .ql-shortcuts-title {
   display: block;
   text-align: center;
@@ -833,21 +753,27 @@
   color: var(--ql-text-muted);
   margin-bottom: 12px;
 }
-
 .ql-shortcuts-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
 }
-
+#ql-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 6px;
+  padding: 10px 0 6px;
+  margin-bottom: 2px;
+}
 .ql-chip {
-  padding: 8px 10px;
-  border-radius: 20px;
-  border: 1px solid var(--ql-border);
-  background: transparent;
+  padding: 10px 6px;
+  border-radius: 22px;
+  border: 1.5px solid var(--ql-border);
+  background: linear-gradient(135deg, rgba(14,165,233,0.06), rgba(56,189,248,0.10));
   color: var(--ql-text-secondary);
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
   transition: all var(--ql-transition);
   text-align: center;
@@ -857,18 +783,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 0 0 0 var(--ql-accent-glow);
 }
 .ql-chip svg {
   flex-shrink: 0;
+  width: 14px;
+  height: 14px;
 }
 .ql-chip:hover {
-  background: var(--ql-accent-subtle);
+  background: linear-gradient(135deg, rgba(14,165,233,0.14), rgba(56,189,248,0.18));
   border-color: var(--ql-accent);
-  color: var(--ql-accent);
+  color: #e0f2fe;
+  box-shadow: 0 2px 8px rgba(14,165,233,0.20), 0 0 0 1px rgba(14,165,233,0.10);
+  transform: translateY(-1px);
 }
-
-/* ===== LICENSE GATE ===== */
+.ql-chip:active {
+  transform: translateY(0px) scale(0.97);
+}
 .ql-license-gate {
   text-align: center;
   padding: 20px 0;
@@ -876,7 +808,6 @@
 .ql-lock-icon { display: flex; justify-content: center; margin-bottom: 14px; }
 .ql-gate-title { font-size: 16px; font-weight: 600; color: var(--ql-text-primary); margin-bottom: 4px; letter-spacing: -0.01em; }
 .ql-gate-desc { font-size: 12px; color: var(--ql-text-secondary); margin-bottom: 18px; line-height: 1.5; }
-
 #ql-floating input {
   width: 100%;
   padding: 10px 16px;
@@ -895,7 +826,6 @@
   box-shadow: 0 0 0 2px var(--ql-accent-subtle);
 }
 #ql-floating input::placeholder { color: var(--ql-text-muted); }
-
 #ql-validate-btn {
   width: 100%;
   padding: 10px;
@@ -915,8 +845,6 @@
   box-shadow: 0 8px 28px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
   filter: brightness(1.1);
 }
-
-/* ===== FOOTER ===== */
 .ql-footer {
   padding: 10px 18px;
   border-top: 1px solid var(--ql-border);
@@ -957,7 +885,6 @@
 .ql-support-link svg {
   flex-shrink: 0;
 }
-
 .ql-badge-mz {
   font-size: 9px;
   font-weight: 600;
@@ -968,8 +895,6 @@
   border-radius: 99px;
   letter-spacing: 0.02em;
 }
-
-/* ===== SWEETALERT EXPIRED MODAL ===== */
 .ql-sweetalert-overlay {
   position: absolute;
   inset: 0;
@@ -1058,8 +983,6 @@
 .ql-sweetalert-btn-secondary:hover {
   background: rgba(255,255,255,0.1);
 }
-
-
 .ql-resize-handle {
   height: 10px;
   cursor: ns-resize;
@@ -1081,7 +1004,6 @@
   background: var(--ql-accent);
   box-shadow: 0 0 8px var(--ql-accent-glow);
 }
-
 .ql-field { margin-bottom: 14px; }
 .ql-field label {
   display: block;
@@ -1092,8 +1014,6 @@
   color: var(--ql-text-muted);
   margin-bottom: 8px;
 }
-
-/* ===== LIGHT MODE ===== */
 #ql-floating.ql-light {
   --ql-bg: #f0f9ff;
   --ql-bg-elevated: #ffffff;
@@ -1149,8 +1069,6 @@
 #ql-floating.ql-light .ql-title-logo { box-shadow: 0 0 12px rgba(14,165,233,0.25); }
 #ql-floating.ql-light .ql-pkg-card { box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #fff !important; }
 #ql-floating.ql-light .ql-trial-bar { background: rgba(15,23,42,0.06); }
-
-/* ===== PAYMENT UI ===== */
 .ql-gate-divider {
   display: flex;
   align-items: center;
@@ -1165,7 +1083,6 @@
   height: 1px;
   background: var(--ql-border);
 }
-
 .ql-buy-btn {
   width: 100%;
   padding: 10px 16px;
@@ -1183,7 +1100,6 @@
   color: #fff;
   box-shadow: 0 4px 16px var(--ql-accent-glow), 0 0 30px rgba(14,165,233,0.12);
 }
-
 .ql-pay-section { padding: 0; }
 .ql-pay-title {
   font-size: 16px;
@@ -1193,7 +1109,6 @@
   text-align: center;
   letter-spacing: -0.02em;
 }
-
 .ql-packages-list {
   display: flex;
   flex-direction: column;
@@ -1206,7 +1121,6 @@
   font-size: 12px;
   padding: 20px 0;
 }
-
 .ql-pkg-card {
   background: var(--ql-bg-surface);
   border: 1px solid var(--ql-border);
@@ -1223,7 +1137,6 @@
   background: var(--ql-accent-subtle);
   box-shadow: 0 0 20px var(--ql-accent-glow);
 }
-
 .ql-pkg-popular {
   position: absolute;
   top: -8px;
@@ -1236,7 +1149,6 @@
   border-radius: 6px;
   letter-spacing: 0.05em;
 }
-
 .ql-pkg-name {
   font-size: 13px;
   font-weight: 700;
@@ -1310,7 +1222,6 @@
   color: var(--ql-success);
   font-weight: 700;
 }
-
 .ql-pkg-select-btn {
   width: 100%;
   padding: 8px;
@@ -1328,7 +1239,6 @@
   color: #fff;
   box-shadow: 0 0 16px var(--ql-accent-glow);
 }
-
 .ql-selected-pkg {
   font-size: 12px;
   color: var(--ql-text-primary);
@@ -1338,7 +1248,6 @@
   border-radius: var(--ql-radius-xs);
   margin-bottom: 14px;
 }
-
 .ql-pay-field {
   margin-bottom: 12px;
 }
@@ -1373,7 +1282,6 @@
   margin-top: 4px;
   display: block;
 }
-
 .ql-pay-methods {
   display: flex;
   gap: 8px;
@@ -1404,7 +1312,6 @@
   background: var(--ql-accent-subtle);
   color: var(--ql-accent);
 }
-
 .ql-confirm-pay-btn {
   width: 100%;
   padding: 12px;
@@ -1428,7 +1335,6 @@
   cursor: not-allowed;
   transform: none;
 }
-
 .ql-pay-log {
   margin-top: 10px;
   font-size: 11px;
@@ -1455,8 +1361,6 @@
   color: var(--ql-accent);
   border: 1px solid rgba(14,165,233,0.2);
 }
-
-/* ===== FILE ATTACHMENT ===== */
 .ql-attach-bar {
   display: flex;
   align-items: center;
@@ -1587,8 +1491,6 @@
   50% { width: 70%; }
   100% { width: 100%; }
 }
-
-/* Watermark Removal Button */
 .ql-watermark-btn {
   display: flex;
   align-items: center;
@@ -1612,8 +1514,6 @@
   border-color: rgba(248,113,113,0.4);
 }
 .ql-watermark-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-/* ===== SHIELD MODE BUTTON ===== */
 .ql-shield-btn {
   display: flex;
   align-items: center;
@@ -1647,8 +1547,6 @@
   border-color: rgba(52,211,153,0.45);
   box-shadow: 0 0 24px -4px rgba(16,185,129,0.25);
 }
-
-/* ===== SHIELD OVERLAY (injected on Lovable chat input) ===== */
 .ql-shield-overlay {
   position: absolute;
   inset: 0;
@@ -1695,8 +1593,6 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
 }
-
-/* ===== TABS SYSTEM (Floating Popup) ===== */
 .ql-tabs {
   display: flex;
   gap: 0;
@@ -1735,8 +1631,6 @@
   font-size: 9px;
   font-weight: 600;
 }
-
-/* ===== CHAT HISTORY (Floating Popup) ===== */
 .ql-chat-empty {
   display: flex;
   flex-direction: column;
@@ -1773,7 +1667,6 @@
 .ql-chat-status-ok { color: var(--ql-success); }
 .ql-chat-status-err { color: var(--ql-danger); }
 .ql-chat-time { color: var(--ql-text-muted); }
-
 .ql-chat-date-divider {
   display: flex;
   align-items: center;
@@ -1817,8 +1710,6 @@
   text-align: center;
 }
 .ql-chat-clear:hover { background: rgba(248,113,113,0.12); border-color: rgba(248,113,113,0.35); }
-
-/* ===== NATIVE CHAT MODE ("Use Standard Chat") ===== */
 .ql-native-chat-btn {
   display: flex;
   align-items: center;
@@ -1841,7 +1732,6 @@
   background: var(--ql-accent-subtle);
   border-color: var(--ql-accent);
 }
-
 .ql-native-badge {
   position: absolute;
   top: -10px;
@@ -1866,7 +1756,6 @@
   0%, 100% { box-shadow: 0 2px 12px rgba(14,165,233,0.4); }
   50% { box-shadow: 0 2px 20px rgba(14,165,233,0.7); }
 }
-
 .ql-native-return-btn {
   display: flex;
   align-items: center;
@@ -1890,7 +1779,6 @@
   border-color: rgba(14,165,233,0.5);
   transform: translateY(-1px);
 }
-
 @keyframes ql-send-blink {
   0% { background-color: #0ea5e9; }
   25% { background-color: #ef4444; }
@@ -1918,7 +1806,6 @@
   0%, 100% { background-color: #0ea5e9 !important; transform: scale(1); }
   50% { background-color: #06b6d4 !important; transform: scale(1.15); }
 }
-
 .ql-native-sending-overlay {
   position: fixed;
   bottom: 90px;
@@ -1947,7 +1834,6 @@
 }
 @keyframes ql-spin { to { transform: rotate(360deg); } }
 @keyframes ql-sending-fadein { from { opacity:0; transform: translateX(-50%) translateY(10px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }
-
 .ql-native-toast {
   position: fixed;
   bottom: 80px;
@@ -1980,8 +1866,6 @@
   border: 1px solid rgba(248, 113, 113, 0.3);
   backdrop-filter: blur(12px);
 }
-
-/* ===== DRAG & DROP OVERLAY ===== */
 .ql-drag-overlay {
   position: absolute;
   inset: 0;
@@ -1999,15 +1883,12 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #c4b5fd;
+  color: #7dd3fc;
   background: rgba(10, 10, 11, 0.85);
   padding: 12px 24px;
   border-radius: 10px;
   border: 1px solid rgba(14, 165, 233, 0.3);
 }
-
-
-/* ===== LEGACY BRAND REFRESH ===== */
 #ql-floating {
   background:
     radial-gradient(circle at 12% -10%, rgba(14,165,233,.22), transparent 34%),
@@ -2038,8 +1919,6 @@
   color:#ffffff !important;
   box-shadow: 0 14px 36px rgba(14,165,233,.28), 0 0 24px rgba(34,211,238,.16);
 }
-
-/* ===== SUHAIB ABID EXTENSION OVERRIDES ===== */
 :root {
   --ql-bg: #080e1a !important;
   --ql-bg-elevated: #0c1a2e !important;
@@ -2067,24 +1946,20 @@
   --ql-shadow-hover: 0 12px 60px -8px rgba(0,0,0,0.6), 0 0 0 1px var(--ql-border-hover), 0 0 40px -8px rgba(14,165,233,0.12) !important;
   --ql-glass: rgba(8,14,26,0.80) !important;
 }
-
 #ql-floating {
   background: var(--ql-glass) !important;
   border-color: var(--ql-border) !important;
   box-shadow: var(--ql-shadow) !important;
 }
-
 #ql-floating::before {
   background:
     radial-gradient(ellipse at 20% 15%, rgba(14,165,233,.15), transparent 28%),
     radial-gradient(ellipse at 80% 90%, rgba(56,189,248,.10), transparent 34%) !important;
 }
-
 .ql-brand-logo,
 .ql-title-logo {
   box-shadow: 0 0 12px var(--ql-accent-glow) !important;
 }
-
 .ql-license-gate,
 .ql-profile-card,
 .ql-template-card,
@@ -2094,7 +1969,6 @@
   background: var(--ql-bg-surface) !important;
   border-color: var(--ql-border) !important;
 }
-
 .ql-badge-pro-header,
 #ql-validate-btn,
 #ql-send-btn,
@@ -2106,8 +1980,6 @@
   color: #fff !important;
   box-shadow: 0 4px 14px var(--ql-accent-glow) !important;
 }
-
-/* LAST_ZONE_LANG_GUARD */
 .ql-lang-sw [data-lang="pt"],
 .ql-lang-sw [data-lang="es"],
 .ql-lang-sw [data-lang="he"],
@@ -2118,4 +1990,30 @@
 .ql-lang-sw:has(.ql-lang-btn:nth-child(4)) .ql-lang-btn:nth-child(n+3) {
   display: none !important;
 }
-/* /LAST_ZONE_LANG_GUARD */
+#ql-floating .ql-tab { color: var(--ql-text-muted) !important; }
+#ql-floating .ql-tab:hover { color: var(--ql-text-secondary) !important; }
+#ql-floating .ql-tab.ql-tab-active { color: var(--ql-accent) !important; border-bottom-color: var(--ql-accent) !important; }
+#ql-floating .ql-gate-title { color: var(--ql-text-primary) !important; }
+#ql-floating .ql-gate-desc { color: var(--ql-text-secondary) !important; }
+#ql-floating .ql-badge-pro-header,
+#ql-floating .ql-badge-pro,
+#ql-floating .ql-badge-test,
+#ql-floating .ql-status-badge { background: var(--ql-success-bg) !important; color: var(--ql-success) !important; }
+#ql-floating .ql-header-left span,
+#ql-floating .ql-user-name { color: var(--ql-text-primary) !important; }
+#ql-floating .ql-lang-btn { color: var(--ql-text-secondary) !important; border-color: var(--ql-border) !important; background: transparent !important; }
+#ql-floating .ql-lang-btn:hover { color: var(--ql-accent) !important; border-color: var(--ql-accent) !important; }
+#ql-floating .ql-log-info,
+#ql-floating #ql-license-log.ql-log-info { color: var(--ql-text-secondary) !important; }
+#ql-floating .ql-log-success { color: var(--ql-success) !important; }
+#ql-floating .ql-log-error { color: var(--ql-danger) !important; }
+#ql-floating .ql-validate-btn,
+#ql-floating #ql-validate-btn { background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee) !important; color: #fff !important; border: none !important; }
+#ql-floating .ql-buy-license-btn,
+#ql-floating #ql-buy-license-btn { background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee) !important; color: #fff !important; border: none !important; }
+#ql-floating *[style*="color"]:not([style*="var(--"]):not([style*="#0ea5"]):not([style*="#38bd"]):not([style*="#7dd3"]):not([style*="#fff"]):not([style*="#0c4a"]):not([style*="#10b9"]):not([style*="#f59e"]):not([style*="#f43f"]):not([style*="#ef44"]):not([style*="#dc26"]):not([style*="#f973"]):not([style*="#60a5"]):not([style*="#3b82"]) {
+  color: var(--ql-text-secondary) !important;
+}
+#ql-floating *[style*="background"]:not([style*="var(--"]):not([style*="#0ea5"]):not([style*="#38bd"]):not([style*="linear-gradient(135deg,rgba(59,130,246,0.12)"]) {
+  background: transparent !important;
+}

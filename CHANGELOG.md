@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.9.1] - 2026-07-10
+
+### Fixed
+- Cleaned up repository structure (removed redundant nested folder)
+
+### Changed
+- Version bump to 3.9.1
+
 ## [3.9.0] - 2026-07-10
 
 ### Fixed

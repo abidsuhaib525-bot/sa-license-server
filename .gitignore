@@ -1,0 +1,6 @@
+node_modules/
+netlify-deploy.zip
+*.rar
+*.zip
+.DS_Store
+backup_obfuscated/

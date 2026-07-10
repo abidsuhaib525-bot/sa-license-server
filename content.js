@@ -164,12 +164,13 @@ function createUI() {
     return;
   }
   chrome.storage.local.get(["ql_sidebar_mode", "ql_native_chat"], _0x20189c => {
-    if (_0x20189c.ql_sidebar_mode === true) {
-      console.log("[ContentScript] Sidebar mode active, skipping floating UI");
-      return;
-    }
-    if (_0x20189c.ql_native_chat === true) {
-      console.log("[ContentScript] Native chat mode active, skipping floating UI");
+    if (_0x20189c.ql_sidebar_mode === true || _0x20189c.ql_native_chat === true) {
+      if (document.getElementById("ql-floating")) { return; }
+      if (!document.querySelector("form#chat-input")) {
+        _buildFloatingUI();
+        return;
+      }
+      console.log("[ContentScript] Sidebar/native mode active, skipping floating UI");
       return;
     }
     _buildFloatingUI();
@@ -212,7 +213,21 @@ function _buildFloatingUI() {
     }
   });
   deactivateBypass();
-  if (window.__LZ_INIT_DONE === false) { showLicenseGate(_0x6b8acf); return; }
+  if (window.__LZ_INIT_DONE === false) {
+    var _0xinitWait = 0;
+    function _0xwaitInit() {
+      if (window.__LZ_INIT_DONE !== false || _0xinitWait > 30) {
+        _0xcontinueBuild();
+        return;
+      }
+      _0xinitWait++;
+      setTimeout(_0xwaitInit, 100);
+    }
+    _0xwaitInit();
+  } else {
+    _0xcontinueBuild();
+  }
+  function _0xcontinueBuild() {
   chrome.storage.local.get(["ql_license_valid", "ql_license_key", "ql_minimized", "ql_height", "ql_dark_mode", "ql_user_name", "ql_expires_at", "ql_activated_at", "ql_license_status", "ql_session_id"], async _0x58573b => {
     qlMinimized = _0x58573b.ql_minimized || false;
     qlHeight = _0x58573b.ql_height || 520;
@@ -307,6 +322,7 @@ function _buildFloatingUI() {
     setupDrag();
     setupResize();
   });
+  }
 }
 function showLicenseGate(_0x8aa135) {
   _0x8aa135.innerHTML = templateLicenseGate(qlMinimized);
@@ -1073,21 +1089,31 @@ if (document.readyState === "complete" || document.readyState === "interactive")
   });
 }
 var qlRetryCount = 0;
-var qlRetryDelays = [300, 600, 1000, 1500, 2000, 3000, 4000, 5000];
+var qlRetryDelays = [300, 600, 1000, 1500, 2000, 3000, 4000, 5000, 7000, 10000];
 function qlRetryInit() {
-  if (document.getElementById("ql-floating") || qlRetryCount >= qlRetryDelays.length) {
-    return;
-  }
-  var _0x3610a3 = qlRetryDelays[qlRetryCount];
+  if (document.getElementById("ql-floating")) { return; }
+  if (qlRetryCount < qlRetryDelays.length && document.body) { createUI(); }
+  var _0x3610a3 = qlRetryDelays[Math.min(qlRetryCount, qlRetryDelays.length - 1)];
   qlRetryCount++;
-  setTimeout(function () {
-    if (!document.getElementById("ql-floating") && document.body) {
-      createUI();
-    }
-    qlRetryInit();
-  }, _0x3610a3);
+  setTimeout(qlRetryInit, _0x3610a3);
 }
 qlRetryInit();
+
+(function() {
+  var _0chatCheckTimer = null;
+  var _0chatObserver = new MutationObserver(function() {
+    clearTimeout(_0chatCheckTimer);
+    _0chatCheckTimer = setTimeout(function() {
+      if (document.getElementById("ql-floating")) { return; }
+      if (document.querySelector("form#chat-input") || document.querySelector("[contenteditable=\"true\"]")) {
+        createUI();
+      }
+    }, 500);
+  });
+  try {
+    _0chatObserver.observe(document.documentElement, { childList: true, subtree: true });
+  } catch(_0e) {}
+})();
 chrome.storage.onChanged.addListener((_0x5960ca, _0x1494eb) => {
   if (_0x1494eb !== "local") {
     return;

@@ -411,7 +411,6 @@ function showMainUI(_0x336dbd) {
     setupDrag();
     setupResize();
     setupDarkMode();
-    setupOptimize();
     setupSpeech();
     setupNotifications();
     setupModoPlano();
@@ -1342,11 +1341,10 @@ function renderPromptView() {
   if (!_0x1da9dd) {
     return;
   }
-  _0x1da9dd.innerHTML = "<textarea id=\"ql-msg\" rows=\"3\" placeholder=\"Digite seu comando...\" spellcheck=\"false\"></textarea><div id=\"ql-attach-preview\" class=\"ql-attach-preview\" style=\"display:none\"></div><div class=\"ql-action-bar\"><div class=\"ql-action-left\"><label class=\"ql-toggle\"><input type=\"checkbox\" id=\"ql-modo-plano\"><span class=\"ql-toggle-slider\"></span></label><span class=\"ql-toggle-label-inline\">Modo Plano</span></div><div class=\"ql-action-center\"><button id=\"ql-attach-btn\" class=\"ql-attach-btn\" title=\"Anexar arquivo (máx. 10)\">📎</button><button id=\"ql-optimize-btn\" class=\"ql-tool-btn\" title=\"Otimizar com IA\">" + SVG_ICONS.openai + "</button><button id=\"ql-speech-btn\" class=\"ql-tool-btn\" title=\"Gravar voz\">" + SVG_ICONS.mic + "</button></div><button id=\"ql-send\" class=\"ql-send-btn\">Enviar ↗</button></div><input type=\"file\" id=\"ql-file-input\" style=\"display:none\" accept=\"image/*,.pdf,.txt,.md,.csv,.json,.xml,.zip\" multiple><button id=\"ql-native-chat-btn\" class=\"ql-native-chat-btn\">Usar Chat Padrão</button><button id=\"ql-remove-watermark\" class=\"ql-watermark-btn\">Remove Watermark</button><button id=\"ql-download-project\" class=\"ql-watermark-btn\" style=\"background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(37,99,235,0.08));border-color:rgba(59,130,246,0.3);color:#60a5fa;margin-top:6px\">Baixar Código Fonte</button><div id=\"ql-download-status\" style=\"display:none\"></div>";
+  _0x1da9dd.innerHTML = "<textarea id=\"ql-msg\" rows=\"3\" placeholder=\"Digite seu comando...\" spellcheck=\"false\"></textarea><div id=\"ql-attach-preview\" class=\"ql-attach-preview\" style=\"display:none\"></div><div class=\"ql-action-bar\"><div class=\"ql-action-left\"><label class=\"ql-toggle\"><input type=\"checkbox\" id=\"ql-modo-plano\"><span class=\"ql-toggle-slider\"></span></label><span class=\"ql-toggle-label-inline\">Modo Plano</span></div><div class=\"ql-action-center\"><button id=\"ql-attach-btn\" class=\"ql-attach-btn\" title=\"Anexar arquivo (máx. 10)\">📎</button><button id=\"ql-speech-btn\" class=\"ql-tool-btn\" title=\"Gravar voz\">" + SVG_ICONS.mic + "</button></div><button id=\"ql-send\" class=\"ql-send-btn\">Enviar ↗</button></div><input type=\"file\" id=\"ql-file-input\" style=\"display:none\" accept=\"image/*,.pdf,.txt,.md,.csv,.json,.xml,.zip\" multiple><button id=\"ql-native-chat-btn\" class=\"ql-native-chat-btn\">Usar Chat Padrão</button><button id=\"ql-remove-watermark\" class=\"ql-watermark-btn\">Remove Watermark</button><button id=\"ql-download-project\" class=\"ql-watermark-btn\" style=\"background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(37,99,235,0.08));border-color:rgba(59,130,246,0.3);color:#60a5fa;margin-top:6px\">Baixar Código Fonte</button><div id=\"ql-download-status\" style=\"display:none\"></div>";
   setupSend();
   setupSuggestionChips();
   setupWatermarkButton();
-  setupOptimize();
   setupSpeech();
   setupModoPlano();
   setupFileAttachment();

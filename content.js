@@ -194,9 +194,7 @@ function _buildFloatingUI() {
   }
   const _0x6b8acf = document.createElement("div");
   _0x6b8acf.id = "ql-floating";
-  const _0x279530 = Math.max(10, window.innerWidth - 400);
-  _0x6b8acf.style.left = _0x279530 + "px";
-  _0x6b8acf.style.top = "80px";
+  _0x6b8acf.style.bottom = "20px";
   document.body.appendChild(_0x6b8acf);
   _0x6b8acf.addEventListener("click", function (_0x1bec18) {
     var _0x479c62 = _0x1bec18.target;
@@ -1890,10 +1888,8 @@ function setupDrag() {
     document.body.style.userSelect = "none";
     let _0x210d3d = _0x479462 + (_0x1a39eb.clientX - _0x57badb);
     let _0xb050d3 = _0x2e3fea + (_0x1a39eb.clientY - _0x1483ce);
-    _0x210d3d = Math.max(0, Math.min(_0x210d3d, window.innerWidth - _0x5db96e.offsetWidth));
-    _0xb050d3 = Math.max(0, Math.min(_0xb050d3, window.innerHeight - _0x5db96e.offsetHeight));
-    _0x5db96e.style.left = _0x210d3d + "px";
-    _0x5db96e.style.top = _0xb050d3 + "px";
+    _0xb050d3 = Math.max(10, Math.min(_0xb050d3, window.innerHeight - 60));
+    _0x5db96e.style.bottom = (window.innerHeight - _0xb050d3 - _0x5db96e.offsetHeight) + "px";
   }
   function _0x15cbb7(_0x48f8bd) {
     if (!_0x5808b2) {

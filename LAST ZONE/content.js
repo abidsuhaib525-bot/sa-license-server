@@ -1,4 +1,4 @@
-console.log("[ContentScript] LAST ZONE started");
+console.log("[ContentScript] Suhaib Abid started");
 const _SB_URL = "https://jlvgubbnvzehfelkntdj.supabase.co";
 const _SB_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impsdmd1YmJudnplaGZlbGtudGRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzNjE4MjMsImV4cCI6MjA5NTkzNzgyM30.hKH5dTCvsmQQD-e04X3_r-m00-mLm1IdP44MdTHarWE";
 const VALIDATE_URL = _SB_URL + "/functions/v1/validate-license";
@@ -164,12 +164,13 @@ function createUI() {
     return;
   }
   chrome.storage.local.get(["ql_sidebar_mode", "ql_native_chat"], _0x20189c => {
-    if (_0x20189c.ql_sidebar_mode === true) {
-      console.log("[ContentScript] Sidebar mode active, skipping floating UI");
-      return;
-    }
-    if (_0x20189c.ql_native_chat === true) {
-      console.log("[ContentScript] Native chat mode active, skipping floating UI");
+    if (_0x20189c.ql_sidebar_mode === true || _0x20189c.ql_native_chat === true) {
+      if (document.getElementById("ql-floating")) { return; }
+      if (!document.querySelector("form#chat-input")) {
+        _buildFloatingUI();
+        return;
+      }
+      console.log("[ContentScript] Sidebar/native mode active, skipping floating UI");
       return;
     }
     _buildFloatingUI();
@@ -193,9 +194,7 @@ function _buildFloatingUI() {
   }
   const _0x6b8acf = document.createElement("div");
   _0x6b8acf.id = "ql-floating";
-  const _0x279530 = Math.max(10, window.innerWidth - 400);
-  _0x6b8acf.style.left = _0x279530 + "px";
-  _0x6b8acf.style.top = "80px";
+  _0x6b8acf.style.bottom = "20px";
   document.body.appendChild(_0x6b8acf);
   _0x6b8acf.addEventListener("click", function (_0x1bec18) {
     var _0x479c62 = _0x1bec18.target;
@@ -212,6 +211,21 @@ function _buildFloatingUI() {
     }
   });
   deactivateBypass();
+  if (window.__LZ_INIT_DONE === false) {
+    var _0xinitWait = 0;
+    function _0xwaitInit() {
+      if (window.__LZ_INIT_DONE !== false || _0xinitWait > 30) {
+        _0xcontinueBuild();
+        return;
+      }
+      _0xinitWait++;
+      setTimeout(_0xwaitInit, 100);
+    }
+    _0xwaitInit();
+  } else {
+    _0xcontinueBuild();
+  }
+  function _0xcontinueBuild() {
   chrome.storage.local.get(["ql_license_valid", "ql_license_key", "ql_minimized", "ql_height", "ql_dark_mode", "ql_user_name", "ql_expires_at", "ql_activated_at", "ql_license_status", "ql_session_id"], async _0x58573b => {
     qlMinimized = _0x58573b.ql_minimized || false;
     qlHeight = _0x58573b.ql_height || 520;
@@ -306,13 +320,14 @@ function _buildFloatingUI() {
     setupDrag();
     setupResize();
   });
+  }
 }
 function showLicenseGate(_0x8aa135) {
   _0x8aa135.innerHTML = templateLicenseGate(qlMinimized);
   setTimeout(() => {
     const _0xc13711 = document.getElementById("ql-buy-license-btn");
     if (_0xc13711) {
-      _0xc13711.addEventListener("click", () => window.open("https://wa.me/8801618125458", "_blank", "noopener,noreferrer"));
+      _0xc13711.addEventListener("click", () => window.open("https://wa.me/923497641385", "_blank", "noopener,noreferrer"));
     }
     setupMinimize();
   }, 50);
@@ -336,57 +351,42 @@ async function validateLicense() {
     if (!qlDeviceId) {
       qlDeviceId = await getDeviceId();
     }
-    const _0x2906da = await fetch(VALIDATE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + _SB_ANON
-      },
-      body: JSON.stringify({
-        license_key: _0x423b8c,
-        device_id: qlDeviceId
-      })
-    });
-    const _0xf3bddb = await _0x2906da.json();
-    if (_0xf3bddb.valid) {
+    var _0x939f2a = null;
+    if (typeof LZ !== "undefined" && LZ.validate) {
+      _0x939f2a = await LZ.validate(_0x423b8c);
+    }
+    if (_0x939f2a) {
       qlExpiredHandled = false;
-      qlSessionId = _0xf3bddb.session_id;
-      qlUserName = _0xf3bddb.user_name;
-      qlExpiresAt = _0xf3bddb.expires_at;
-      qlActivatedAt = _0xf3bddb.activated_at;
-      qlLicenseStatus = _0xf3bddb.status;
-      qlOnlineCount = _0xf3bddb.online_count || 0;
+      qlSessionId = _0x939f2a.lz_session;
+      qlUserName = _0x939f2a.lz_user;
+      qlExpiresAt = _0x939f2a.lz_expires;
+      qlActivatedAt = _0x939f2a.lz_activated || new Date().toISOString();
+      qlLicenseStatus = _0x939f2a.lz_status || "active";
+      qlOnlineCount = _0x939f2a.lz_online || 0;
       chrome.storage.local.set({
         ql_license_valid: true,
         ql_license_key: _0x423b8c,
-        ql_license_id: _0xf3bddb.license_id || null,
-        ql_session_id: _0xf3bddb.session_id,
-        ql_user_name: _0xf3bddb.user_name || null,
-        ql_expires_at: _0xf3bddb.expires_at || null,
-        ql_activated_at: _0xf3bddb.activated_at || null,
-        ql_license_status: _0xf3bddb.status || null
+        ql_session_id: qlSessionId,
+        ql_user_name: qlUserName,
+        ql_expires_at: qlExpiresAt,
+        ql_activated_at: qlActivatedAt,
+        ql_license_status: qlLicenseStatus
       }, () => {
         activateBypass();
         if (_0x57489b) {
           _0x57489b.className = "ql-log-success";
-          _0x57489b.innerText = "✓ " + _0xf3bddb.message;
+          _0x57489b.innerText = "✓ License activated successfully!";
         }
-        try {
-          if (typeof QLSounds !== "undefined") {
-            QLSounds.activation();
-          }
-        } catch (_0x297e02) {}
+        try { if (typeof QLSounds !== "undefined") QLSounds.activation(); } catch (_0x297e02) {}
         setTimeout(() => {
           const _0x561d0b = document.getElementById("ql-floating");
-          if (_0x561d0b) {
-            showMainUI(_0x561d0b);
-          }
+          if (_0x561d0b) showMainUI(_0x561d0b);
           startHeartbeat(_0x423b8c);
         }, 800);
       });
     } else if (_0x57489b) {
       _0x57489b.className = "ql-log-error";
-      _0x57489b.innerText = "✗ " + _0xf3bddb.message;
+      _0x57489b.innerText = "✗ Invalid or expired license key";
     }
   } catch (_0x5effbf) {
     if (_0x57489b) {
@@ -400,6 +400,18 @@ function showMainUI(_0x336dbd) {
   const _0x3bcd32 = qlLicenseStatus === "trial" ? "<span class=\"ql-status-badge ql-badge-test\">TEST</span>" : "<span class=\"ql-status-badge ql-badge-pro\">ATIVO</span>";
   _0x336dbd.innerHTML = templateMainUI(_0x2dd5eb, _0x3bcd32, qlMinimized);
   _0x336dbd.style.height = qlHeight + "px";
+  var _0xlogoutBtnHtml = document.getElementById("ql-logout-btn");
+  if (!_0xlogoutBtnHtml) {
+    var _0xheaderRight = _0x336dbd.querySelector(".ql-header-right");
+    if (_0xheaderRight) {
+      var _0xbtn = document.createElement("button");
+      _0xbtn.id = "ql-logout-btn";
+      _0xbtn.className = "ql-icon-btn";
+      _0xbtn.title = "Sign Out";
+      _0xbtn.innerHTML = SVG_ICONS.logout;
+      _0xheaderRight.appendChild(_0xbtn);
+    }
+  }
   setTimeout(() => {
     updateSyncStatus();
     setupSend();
@@ -421,7 +433,6 @@ function showMainUI(_0x336dbd) {
     setupNativeChatButton();
     setupClipboardPaste();
     setupDownloadProject();
-    checkForUpdatePopup();
     checkResellerRolePopup();
     chrome.storage.local.get(["ql_license_key", "ql_session_id"], _0x330371 => {
       if (_0x330371.ql_license_key) {
@@ -442,7 +453,7 @@ function showMainUI(_0x336dbd) {
         if (qlHeartbeatInterval) {
           clearInterval(qlHeartbeatInterval);
         }
-        chrome.storage.local.remove(["ql_license_valid", "ql_license_key", "ql_session_id", "ql_user_name", "ql_expires_at", "ql_activated_at", "ql_license_status"], () => {
+        chrome.storage.local.remove(["ql_license_valid", "ql_license_key", "ql_session_id", "ql_user_name", "ql_expires_at", "ql_activated_at", "ql_license_status", "lz_valid", "lz_key", "lz_session", "lz_user", "lz_expires", "lz_activated", "lz_status", "lz_plan", "lz_online"], () => {
           deactivateBypass();
           qlUserName = null;
           qlExpiresAt = null;
@@ -488,47 +499,6 @@ function showCustomAlert(_0x3bee6c, _0xcf8e35) {
   }, 4000);
 }
 function setupOptimize() {
-  const _0xfc25f0 = document.getElementById("ql-optimize-btn");
-  if (!_0xfc25f0) {
-    return;
-  }
-  _0xfc25f0.addEventListener("click", async () => {
-    const _0x4725eb = document.getElementById("ql-msg");
-    if (!_0x4725eb || !_0x4725eb.value.trim()) {
-      showCustomAlert("Atenção", "Digite um prompt antes de otimizar.");
-      return;
-    }
-    const _0xd39d89 = _0x4725eb.value.trim();
-    _0xfc25f0.classList.add("ql-tool-loading");
-    _0xfc25f0.disabled = true;
-    const _0x573dce = await new Promise(_0x15d4a4 => chrome.storage.local.get(["ql_license_key"], _0x15d4a4));
-    const _0x188300 = _0x573dce.ql_license_key || "";
-    try {
-      const _0x55ffbf = await bgFetch(OPTIMIZE_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + SUPABASE_ANON_KEY,
-          "x-license-key": _0x188300
-        },
-        body: JSON.stringify({
-          prompt: _0xd39d89
-        })
-      });
-      if (_0x55ffbf.optimized_prompt) {
-        _0x4725eb.value = _0x55ffbf.optimized_prompt;
-        showCustomAlert("Prompt Otimizado! ✨", "Seu prompt foi aprimorado com IA e está pronto para envio.");
-      } else if (_0x55ffbf.error) {
-        showCustomAlert("Erro", _0x55ffbf.error);
-      }
-    } catch (_0x211c56) {
-      console.error("[Optimize] erro:", _0x211c56);
-      showCustomAlert("Erro", "Falha ao conectar com o otimizador: " + (_0x211c56.message || ""));
-    } finally {
-      _0xfc25f0.classList.remove("ql-tool-loading");
-      _0xfc25f0.disabled = false;
-    }
-  });
 }
 function setupSpeech() {
   const _0xfd8793 = document.getElementById("ql-speech-btn");
@@ -986,19 +956,13 @@ function startHeartbeat(_0x4c7845) {
   qlHbNetworkFailCount = 0;
   qlHeartbeatInterval = setInterval(async () => {
     try {
-      const _0xa1794d = await bgFetch(VALIDATE_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + SUPABASE_ANON_KEY
-        },
-        body: JSON.stringify({
-          license_key: _0x4c7845,
-          session_id: qlSessionId,
-          heartbeat: true,
-          device_id: qlDeviceId
-        })
-      });
+      var _0xa1794d = null;
+      if (typeof LZ !== "undefined" && LZ.heartbeat) {
+        _0xa1794d = await LZ.heartbeat(_0x4c7845);
+      }
+      if (!_0xa1794d) {
+        _0xa1794d = { valid: false, message: "Heartbeat failed" };
+      }
       if (!_0xa1794d.valid) {
         const _0x381c52 = _0xa1794d.reason === "device_conflict";
         const _0x3f176c = _0xa1794d.reason === "expired" || _0xa1794d.reason === "suspended" || _0xa1794d.message && (_0xa1794d.message.includes("expirada") || _0xa1794d.message.includes("suspensa"));
@@ -1011,7 +975,7 @@ function startHeartbeat(_0x4c7845) {
         if (_0x381c52 || _0x3f176c) {
           clearInterval(qlHeartbeatInterval);
           deactivateBypass();
-          chrome.storage.local.remove(["ql_license_valid", "ql_license_key", "ql_session_id", "ql_user_name", "ql_expires_at", "ql_activated_at", "ql_license_status"], () => {
+        chrome.storage.local.remove(["lz_valid", "lz_key", "lz_session", "lz_user", "lz_expires", "lz_activated", "lz_status", "lz_plan", "lz_online", "ql_license_valid", "ql_license_key", "ql_session_id", "ql_user_name", "ql_expires_at", "ql_activated_at", "ql_license_status"], () => {
             const _0x178c9f = document.getElementById("ql-floating");
             if (_0x178c9f) {
               showLicenseGate(_0x178c9f);
@@ -1123,21 +1087,31 @@ if (document.readyState === "complete" || document.readyState === "interactive")
   });
 }
 var qlRetryCount = 0;
-var qlRetryDelays = [300, 600, 1000, 1500, 2000, 3000, 4000, 5000];
+var qlRetryDelays = [300, 600, 1000, 1500, 2000, 3000, 4000, 5000, 7000, 10000];
 function qlRetryInit() {
-  if (document.getElementById("ql-floating") || qlRetryCount >= qlRetryDelays.length) {
-    return;
-  }
-  var _0x3610a3 = qlRetryDelays[qlRetryCount];
+  if (document.getElementById("ql-floating")) { return; }
+  if (qlRetryCount < qlRetryDelays.length && document.body) { createUI(); }
+  var _0x3610a3 = qlRetryDelays[Math.min(qlRetryCount, qlRetryDelays.length - 1)];
   qlRetryCount++;
-  setTimeout(function () {
-    if (!document.getElementById("ql-floating") && document.body) {
-      createUI();
-    }
-    qlRetryInit();
-  }, _0x3610a3);
+  setTimeout(qlRetryInit, _0x3610a3);
 }
 qlRetryInit();
+
+(function() {
+  var _0chatCheckTimer = null;
+  var _0chatObserver = new MutationObserver(function() {
+    clearTimeout(_0chatCheckTimer);
+    _0chatCheckTimer = setTimeout(function() {
+      if (document.getElementById("ql-floating")) { return; }
+      if (document.querySelector("form#chat-input") || document.querySelector("[contenteditable=\"true\"]")) {
+        createUI();
+      }
+    }, 500);
+  });
+  try {
+    _0chatObserver.observe(document.documentElement, { childList: true, subtree: true });
+  } catch(_0e) {}
+})();
 chrome.storage.onChanged.addListener((_0x5960ca, _0x1494eb) => {
   if (_0x1494eb !== "local") {
     return;
@@ -1808,6 +1782,11 @@ function setupSend() {
       }
       return;
     }
+    var _0xwaitStart = Date.now();
+    while (qlAttachedFiles.some(function (f) { return f.uploading; })) {
+      if (Date.now() - _0xwaitStart > 15000) { break; }
+      await new Promise(function (r) { return setTimeout(r, 200); });
+    }
     const _0x3cbe89 = qlAttachedFiles.filter(function (_0x1952e7) {
       return _0x1952e7.public_url && !_0x1952e7.uploading && !_0x1952e7.uploadFailed;
     });
@@ -1909,10 +1888,8 @@ function setupDrag() {
     document.body.style.userSelect = "none";
     let _0x210d3d = _0x479462 + (_0x1a39eb.clientX - _0x57badb);
     let _0xb050d3 = _0x2e3fea + (_0x1a39eb.clientY - _0x1483ce);
-    _0x210d3d = Math.max(0, Math.min(_0x210d3d, window.innerWidth - _0x5db96e.offsetWidth));
-    _0xb050d3 = Math.max(0, Math.min(_0xb050d3, window.innerHeight - _0x5db96e.offsetHeight));
-    _0x5db96e.style.left = _0x210d3d + "px";
-    _0x5db96e.style.top = _0xb050d3 + "px";
+    _0xb050d3 = Math.max(10, Math.min(_0xb050d3, window.innerHeight - 60));
+    _0x5db96e.style.bottom = (window.innerHeight - _0xb050d3 - _0x5db96e.offsetHeight) + "px";
   }
   function _0x15cbb7(_0x48f8bd) {
     if (!_0x5808b2) {
@@ -2122,20 +2099,20 @@ async function handleFilesAttach(_0x17874d) {
     try {
       var _0x372d2e = await uploadFileDirect(_0x4b5aa6, _0x107fd6);
       qlAttachedFiles[_0x1cec16].file_id = _0x372d2e.file_id;
+      qlAttachedFiles[_0x1cec16].public_url = _0x372d2e.public_url;
       qlAttachedFiles[_0x1cec16].uploading = false;
       renderAttachPreview();
     } catch (_0xad284a) {
       qlAttachedFiles[_0x1cec16].uploading = false;
-      qlAttachedFiles[_0x1cec16].file_id = "local_direct_" + crypto.randomUUID();
       qlAttachedFiles[_0x1cec16].uploadFailed = true;
       renderAttachPreview();
     }
   }
-  showCustomAlert("Anexado 📎", _0x17874d.length + " arquivo(s) adicionado(s)!");
+  var _0okCount = qlAttachedFiles.filter(function (f) { return f.public_url && !f.uploadFailed; }).length;
+  if (_0okCount > 0) {
+    showCustomAlert("Anexado 📎", _0okCount + " arquivo(s) adicionado(s)!");
+  }
 }
-var VERSIONS_URL_POPUP = _SB_URL + "/rest/v1/extension_versions?select=version,changelog,file_path,is_alert_active&order=created_at.desc&limit=1&is_alert_active=eq.true";
-var USER_ROLES_URL_POPUP = _SB_URL + "/rest/v1/user_roles?select=role";
-var CURRENT_EXT_VERSION_POPUP = "3.8.6";
 function setupDownloadProject() {
   var _0x27307d = document.getElementById("ql-download-project");
   if (!_0x27307d) {
@@ -2309,28 +2286,7 @@ function setupDownloadProject() {
     }
   });
 }
-async function checkForUpdatePopup() {
-  try {
-    var _0xcfd34f = await bgFetch(VERSIONS_URL_POPUP, {
-      method: "GET",
-      headers: {
-        apikey: SUPABASE_ANON_KEY
-      }
-    });
-    if (!_0xcfd34f || !_0xcfd34f.length) {
-      return;
-    }
-    var _0x53dd72 = _0xcfd34f[0];
-    if (_0x53dd72.version !== CURRENT_EXT_VERSION_POPUP && _0x53dd72.is_alert_active) {
-      var _0x47f824 = document.getElementById("ql-update-banner");
-      if (_0x47f824) {
-        var _0x33ab95 = _0x53dd72.file_path ? _SB_URL + "/storage/v1/object/public/extension-releases/" + _0x53dd72.file_path : null;
-        _0x47f824.innerHTML = "<div style=\"padding:10px 12px;background:linear-gradient(135deg,rgba(251,191,36,0.12),rgba(245,158,11,0.08));border:1px solid rgba(251,191,36,0.3);border-radius:10px;margin:8px 0\"><div style=\"display:flex;align-items:center;gap:6px;margin-bottom:4px\"><span style=\"font-size:14px\">&#128276;</span><strong style=\"font-size:11px;color:#f59e0b\">Nova atualizacao v" + escapeHtml(_0x53dd72.version) + "!</strong></div><p style=\"font-size:10px;color:#a1a1aa;margin:0 0 6px;white-space:pre-line\">" + escapeHtml(_0x53dd72.changelog || "") + "</p>" + (_0x33ab95 ? "<a href=\"" + escapeHtml(_0x33ab95) + "\" target=\"_blank\" style=\"display:inline-block;padding:4px 12px;background:#f59e0b;color:#000;border-radius:6px;text-decoration:none;font-size:10px;font-weight:700\">Baixar v" + escapeHtml(_0x53dd72.version) + "</a>" : "") + "</div>";
-        _0x47f824.style.display = "block";
-      }
-    }
-  } catch (_0x301da6) {}
-}
+
 async function checkResellerRolePopup() {
   try {
     var _0x3a9171 = await new Promise(function (_0x2bb65a) {
@@ -2566,7 +2522,7 @@ window.addEventListener("message", _0x468d89 => {
 });
 ;
 (() => {
-  const _0x3a58e8 = "https://wa.me/8801618125458";
+  const _0x3a58e8 = "https://wa.me/923497641385";
   const _0x18d00e = [];
   let _0x2fc567 = false;
   function _0x49a34e() {
@@ -2622,7 +2578,7 @@ window.addEventListener("message", _0x468d89 => {
 ;
 (() => {
   const _0xdf121 = "Developed by Lovable Hut BD";
-  const _0x91954c = "https://wa.me/8801618125458";
+  const _0x91954c = "https://wa.me/923497641385";
   const _0x283964 = [];
   function _0x2df05c() {
     try {

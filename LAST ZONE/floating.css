@@ -1,54 +1,82 @@
-/* LAST ZONE Extension - Premium UI v3.8.6 */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* ===== SUHAIB ABID EXTENSION ===== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 /* ===== CSS VARIABLES ===== */
 :root {
-  --ql-bg: #090514;
-  --ql-bg-elevated: #120a24;
-  --ql-bg-surface: #18102e;
-  --ql-bg-hover: #24133f;
-  --ql-border: rgba(14,165,233,0.26);
-  --ql-border-hover: rgba(96,214,232,0.40);
-  --ql-text-primary: #f4f4f5;
-  --ql-text-secondary: #a1a1aa;
-  --ql-text-muted: #71717a;
+  --ql-bg: #080e1a;
+  --ql-bg-elevated: #0c1a2e;
+  --ql-bg-surface: #11223a;
+  --ql-bg-hover: #1a3050;
+  --ql-border: rgba(14,165,233,0.20);
+  --ql-border-hover: rgba(56,189,248,0.40);
+  --ql-text-primary: #f0f9ff;
+  --ql-text-secondary: #7dd3fc;
+  --ql-text-muted: #6b8fae;
   --ql-accent: #0ea5e9;
-  --ql-accent-hover: #67e8f9;
-  --ql-accent-glow: rgba(217,70,239,0.34);
-  --ql-accent-subtle: rgba(217,70,239,0.12);
-  --ql-success: #34d399;
-  --ql-success-bg: rgba(52,211,153,0.08);
-  --ql-warning: #fbbf24;
-  --ql-warning-bg: rgba(251,191,36,0.08);
-  --ql-danger: #f87171;
-  --ql-danger-bg: rgba(248,113,113,0.08);
-  --ql-radius: 16px;
-  --ql-radius-sm: 10px;
-  --ql-radius-xs: 8px;
-  --ql-shadow: 0 24px 80px -12px rgba(0,0,0,0.6), 0 0 0 1px var(--ql-border);
-  --ql-shadow-hover: 0 32px 100px -12px rgba(0,0,0,0.7), 0 0 0 1px var(--ql-border-hover);
-  --ql-transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --ql-glass: rgba(17,17,19,0.85);
+  --ql-accent-hover: #38bdf8;
+  --ql-accent-glow: rgba(14,165,233,0.30);
+  --ql-accent-subtle: rgba(14,165,233,0.12);
+  --ql-success: #10b981;
+  --ql-success-bg: rgba(16,185,129,0.08);
+  --ql-warning: #f59e0b;
+  --ql-warning-bg: rgba(245,158,11,0.08);
+  --ql-danger: #f43f5e;
+  --ql-danger-bg: rgba(244,63,94,0.08);
+  --ql-radius: 24px;
+  --ql-radius-sm: 14px;
+  --ql-radius-xs: 10px;
+  --ql-shadow: 0 8px 40px -8px rgba(0,0,0,0.5), 0 0 0 1px var(--ql-border), 0 0 30px -6px rgba(14,165,233,0.08);
+  --ql-shadow-hover: 0 12px 60px -8px rgba(0,0,0,0.6), 0 0 0 1px var(--ql-border-hover), 0 0 40px -8px rgba(14,165,233,0.12);
+  --ql-transition: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --ql-glass: rgba(8,14,26,0.80);
 }
 
-/* ===== MAIN CONTAINER ===== */
+/* ===== GLOBAL SMOOTH INTERACTIONS ===== */
+@keyframes sa-glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px var(--ql-accent-glow); }
+  50% { box-shadow: 0 0 24px var(--ql-accent-glow), 0 0 48px rgba(14,165,233,0.10); }
+}
+
+#ql-floating button,
+#ql-floating .ql-btn,
+#ql-floating .ql-chip {
+  transition: transform var(--ql-transition),
+              box-shadow var(--ql-transition),
+              background var(--ql-transition),
+              border-color var(--ql-transition),
+              opacity var(--ql-transition);
+}
+#ql-floating button:hover,
+#ql-floating .ql-btn:hover,
+#ql-floating .ql-chip:hover {
+  transform: translateY(-1px);
+  animation: sa-glow-pulse 2s ease-in-out infinite;
+}
+#ql-floating button:active,
+#ql-floating .ql-btn:active,
+#ql-floating .ql-chip:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* ===== MAIN CONTAINER – BOTTOM-CENTER PILL ===== */
 #ql-floating {
   position: fixed;
-  width: 400px;
+  bottom: 20px;
+  left: 50%;
   z-index: 999999999;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   border-radius: var(--ql-radius);
   overflow: hidden;
-  background: var(--ql-bg);
+  background: var(--ql-glass);
   border: 1px solid var(--ql-border);
   box-shadow: var(--ql-shadow);
-  transition: box-shadow var(--ql-transition), height 0.3s ease;
+  transition: box-shadow var(--ql-transition), height 0.3s ease, transform var(--ql-transition), opacity var(--ql-transition);
   display: flex;
   flex-direction: column;
   min-height: 60px;
-  overflow-y: auto;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  width: 420px;
 }
 
 #ql-floating:hover {
@@ -76,7 +104,7 @@
   height: auto !important;
   min-height: 52px;
   overflow: hidden;
-  animation: ql-swoosh-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: sa-collapse 0.3s var(--ql-transition);
 }
 #ql-floating.ql-minimized #ql-body,
 #ql-floating.ql-minimized #ql-footer,
@@ -84,28 +112,20 @@
 #ql-floating.ql-minimized #ql-notif-panel {
   display: none !important;
 }
-@keyframes ql-swoosh-in {
-  0%   { transform: scale(1) translateX(0); opacity: 1; }
-  35%  { transform: scale(0.92) translateX(8px); opacity: 0.85; filter: blur(2px); }
-  70%  { transform: scale(1.02) translateX(-2px); opacity: 1; filter: blur(0); }
-  100% { transform: scale(1) translateX(0); }
+@keyframes sa-collapse {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(0.95); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
 }
 #ql-floating:not(.ql-minimized) {
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow var(--ql-transition), height 0.3s ease;
-}
-#ql-floating .ql-minimize-btn,
-#ql-floating .ql-icon-btn {
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background var(--ql-transition), color var(--ql-transition);
-}
-#ql-floating .ql-icon-btn:active {
-  transform: scale(0.85) rotate(-8deg);
+  transition: transform 0.3s var(--ql-transition), box-shadow var(--ql-transition), height 0.3s ease;
 }
 
 /* ===== HEADER ===== */
 #ql-header {
   cursor: move;
-  padding: 14px 18px;
-  background: var(--ql-bg-elevated);
+  padding: 12px 20px;
+  background: transparent;
   border-bottom: 1px solid var(--ql-border);
   display: flex;
   align-items: center;
@@ -124,31 +144,32 @@
 
 .ql-brand {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--ql-text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .ql-badge-pro-header {
-  font-size: 9px;
-  font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
-  color: #fff;
-  letter-spacing: 0.08em;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background: var(--ql-accent-subtle);
+  color: var(--ql-accent);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  border: 1px solid var(--ql-border);
 }
 
 .ql-header-right {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   flex-shrink: 0;
 }
 
 .ql-icon-btn {
-  width: 32px;
+  width: 30px;
   height: 32px;
   border: none;
   background: transparent;
@@ -163,8 +184,8 @@
   position: relative;
 }
 .ql-icon-btn:hover {
-  background: var(--ql-bg-hover);
-  color: var(--ql-text-primary);
+  background: var(--ql-accent-subtle);
+  color: var(--ql-accent);
 }
 
 /* ===== NOTIFICATION BADGE ===== */
@@ -172,37 +193,37 @@
   position: absolute;
   top: -3px;
   right: -3px;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: linear-gradient(135deg, #ef4444, #dc2626);
   color: #fff;
-  font-size: 9px;
-  font-weight: 800;
+  font-size: 8px;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
-  box-shadow: 0 0 8px rgba(239,68,68,0.4);
+  box-shadow: 0 0 6px rgba(239,68,68,0.4);
 }
 
 /* ===== NOTIFICATION PANEL ===== */
 .ql-notif-panel {
   position: absolute;
-  top: 52px;
+  top: 48px;
   right: 8px;
   left: 8px;
   background: var(--ql-bg-surface);
   border: 1px solid var(--ql-border);
-  border-radius: 14px;
-  box-shadow: 0 16px 48px -12px rgba(0,0,0,0.5);
+  border-radius: var(--ql-radius-sm);
+  box-shadow: var(--ql-shadow);
   z-index: 10;
   max-height: 300px;
   overflow-y: auto;
-  animation: ql-slide-down 0.2s ease;
+  animation: sa-slide-down 0.2s var(--ql-transition);
 }
-@keyframes ql-slide-down {
-  from { opacity: 0; transform: translateY(-8px); }
+@keyframes sa-slide-down {
+  from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -326,8 +347,8 @@
   box-shadow: 0 4px 16px var(--ql-accent-glow);
 }
 .ql-alert-ok-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px var(--ql-accent-glow);
+  box-shadow: 0 8px 24px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
+  filter: brightness(1.15);
 }
 
 /* ===== PLAN MODE MODAL ===== */
@@ -443,32 +464,32 @@
   padding: 10px;
   border: none;
   border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, var(--ql-accent), var(--ql-accent-hover));
-  color: var(--ql-text-primary);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
+  color: #fff;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
   transition: all var(--ql-transition);
 }
 .ql-modo-plano-btn:hover {
-  box-shadow: 0 0 20px -4px var(--ql-accent-glow);
-  transform: translateY(-1px);
+  box-shadow: 0 0 20px -4px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
+  filter: brightness(1.15);
 }
 
 /* ===== BODY ===== */
 #ql-body {
-  padding: 18px;
+  padding: 16px 20px;
   flex: 1;
   overflow-y: auto;
 }
 
 /* ===== PROFILE CARD ===== */
 .ql-profile-card {
-  background: var(--ql-bg-surface);
+  background: var(--ql-bg-elevated);
   border: 1px solid var(--ql-border);
-  border-radius: 14px;
-  padding: 14px 16px;
-  margin-bottom: 16px;
+  border-radius: var(--ql-radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 14px;
   transition: border-color var(--ql-transition);
 }
 .ql-profile-card:hover {
@@ -479,28 +500,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .ql-profile-info {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .ql-profile-name {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--ql-text-primary);
   letter-spacing: -0.01em;
 }
 
 .ql-status-badge {
-  font-size: 9px;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: 6px;
-  letter-spacing: 0.08em;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
@@ -586,7 +607,7 @@
   background-size: 200% 100%;
   animation: ql-bar-shimmer 3s ease infinite;
   transition: width 1s ease;
-  box-shadow: 0 0 8px rgba(14, 165, 233, 0.4);
+  box-shadow: 0 0 8px var(--ql-accent-glow);
 }
 
 .ql-trial-bar-fill.ql-bar-urgent {
@@ -613,25 +634,26 @@
 /* ===== TEXTAREA ===== */
 #ql-floating textarea {
   width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
+  padding: 12px 16px;
+  border-radius: 20px;
   border: 1px solid var(--ql-border);
-  background: var(--ql-bg-surface);
+  background: var(--ql-bg-elevated);
   color: var(--ql-text-primary);
   font-size: 13px;
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
   transition: border-color var(--ql-transition), box-shadow var(--ql-transition);
   box-sizing: border-box;
   outline: none;
-  resize: vertical;
-  min-height: 64px;
+  resize: none;
+  min-height: 44px;
+  max-height: 120px;
   margin-bottom: 10px;
   line-height: 1.5;
 }
 
 #ql-floating textarea:focus {
   border-color: var(--ql-accent);
-  box-shadow: 0 0 0 3px var(--ql-accent-subtle), 0 0 20px var(--ql-accent-glow);
+  box-shadow: 0 0 0 2px var(--ql-accent-subtle);
 }
 
 #ql-floating textarea::placeholder {
@@ -643,7 +665,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   padding: 0;
   gap: 8px;
 }
@@ -651,7 +673,7 @@
 .ql-action-left {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-shrink: 0;
 }
 
@@ -669,8 +691,8 @@
   width: 34px;
   height: 34px;
   border: 1px solid var(--ql-border);
-  background: var(--ql-bg-surface);
-  border-radius: var(--ql-radius-xs);
+  background: transparent;
+  border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -680,10 +702,8 @@
 }
 .ql-tool-btn:hover {
   background: var(--ql-accent-subtle);
-  border-color: rgba(14,165,233,0.2);
+  border-color: var(--ql-accent);
   color: var(--ql-accent);
-  box-shadow: 0 0 12px var(--ql-accent-glow);
-  transform: translateY(-1px);
 }
 .ql-tool-btn:disabled {
   opacity: 0.35;
@@ -693,9 +713,9 @@
 
 /* Tool button loading */
 .ql-tool-loading {
-  animation: ql-spin 0.8s linear infinite;
+  animation: sa-spin 0.8s linear infinite;
 }
-@keyframes ql-spin {
+@keyframes sa-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
@@ -705,9 +725,9 @@
   background: var(--ql-danger-bg) !important;
   border-color: rgba(248,113,113,0.3) !important;
   color: var(--ql-danger) !important;
-  animation: ql-pulse 1.5s ease-in-out infinite;
+  animation: sa-pulse 1.5s ease-in-out infinite;
 }
-@keyframes ql-pulse {
+@keyframes sa-pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(248,113,113,0.3); }
   50% { box-shadow: 0 0 0 8px rgba(248,113,113,0); }
 }
@@ -722,25 +742,23 @@
 
 /* ===== SEND BUTTON ===== */
 .ql-send-btn {
-  padding: 8px 22px;
+  padding: 8px 24px;
   border: none;
-  border-radius: var(--ql-radius-sm);
+  border-radius: 20px;
   background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: #fff;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   transition: all var(--ql-transition);
   box-shadow: 0 2px 12px var(--ql-accent-glow);
   letter-spacing: -0.01em;
 }
 .ql-send-btn:hover {
-  box-shadow: 0 6px 24px var(--ql-accent-glow);
-  transform: translateY(-1px);
+  box-shadow: 0 6px 24px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
   filter: brightness(1.1);
 }
 .ql-send-btn:active {
-  transform: translateY(0);
   filter: brightness(0.95);
 }
 .ql-send-btn.ql-sending,
@@ -823,10 +841,10 @@
 }
 
 .ql-chip {
-  padding: 8px 4px;
-  border-radius: var(--ql-radius-xs);
+  padding: 8px 10px;
+  border-radius: 20px;
   border: 1px solid var(--ql-border);
-  background: var(--ql-bg-surface);
+  background: transparent;
   color: var(--ql-text-secondary);
   font-size: 11px;
   font-weight: 500;
@@ -846,49 +864,47 @@
 }
 .ql-chip:hover {
   background: var(--ql-accent-subtle);
-  border-color: rgba(14,165,233,0.2);
-  color: #c4b5fd;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px var(--ql-accent-glow);
+  border-color: var(--ql-accent);
+  color: var(--ql-accent);
 }
 
 /* ===== LICENSE GATE ===== */
 .ql-license-gate {
   text-align: center;
-  padding: 24px 0;
+  padding: 20px 0;
 }
-.ql-lock-icon { display: flex; justify-content: center; margin-bottom: 16px; }
-.ql-gate-title { font-size: 17px; font-weight: 700; color: var(--ql-text-primary); margin-bottom: 6px; letter-spacing: -0.02em; }
-.ql-gate-desc { font-size: 13px; color: var(--ql-text-secondary); margin-bottom: 20px; line-height: 1.5; }
+.ql-lock-icon { display: flex; justify-content: center; margin-bottom: 14px; }
+.ql-gate-title { font-size: 16px; font-weight: 600; color: var(--ql-text-primary); margin-bottom: 4px; letter-spacing: -0.01em; }
+.ql-gate-desc { font-size: 12px; color: var(--ql-text-secondary); margin-bottom: 18px; line-height: 1.5; }
 
 #ql-floating input {
   width: 100%;
-  padding: 12px 16px;
-  border-radius: var(--ql-radius-sm);
+  padding: 10px 16px;
+  border-radius: 20px;
   border: 1px solid var(--ql-border);
-  background: var(--ql-bg-surface);
+  background: var(--ql-bg-elevated);
   color: var(--ql-text-primary);
   font-size: 13px;
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
   transition: all var(--ql-transition);
   box-sizing: border-box;
   outline: none;
 }
 #ql-floating input:focus {
   border-color: var(--ql-accent);
-  box-shadow: 0 0 0 3px var(--ql-accent-subtle), 0 0 20px var(--ql-accent-glow);
+  box-shadow: 0 0 0 2px var(--ql-accent-subtle);
 }
 #ql-floating input::placeholder { color: var(--ql-text-muted); }
 
 #ql-validate-btn {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: none;
-  border-radius: var(--ql-radius-sm);
+  border-radius: 20px;
   background: linear-gradient(135deg, #0ea5e9, #06b6d4 48%, #22d3ee);
   color: white;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
   transition: all var(--ql-transition);
   margin-top: 8px;
@@ -896,8 +912,7 @@
   letter-spacing: -0.01em;
 }
 #ql-validate-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 28px var(--ql-accent-glow);
+  box-shadow: 0 8px 28px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
   filter: brightness(1.1);
 }
 
@@ -972,31 +987,31 @@
   opacity: 1;
 }
 .ql-sweetalert-box {
-  background: var(--ql-surface);
+  background: var(--ql-bg-elevated);
   border: 1px solid var(--ql-border);
-  border-radius: 20px;
-  padding: 32px 28px;
+  border-radius: var(--ql-radius);
+  padding: 28px 24px;
   text-align: center;
   max-width: 320px;
   width: 90%;
-  transform: scale(0.85);
-  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  transform: scale(0.9);
+  transition: transform var(--ql-transition);
+  box-shadow: var(--ql-shadow);
 }
 .ql-sweetalert-visible .ql-sweetalert-box {
   transform: scale(1);
 }
 .ql-sweetalert-icon {
-  font-size: 48px;
-  margin-bottom: 12px;
-  animation: ql-shake 0.6s ease 0.3s both;
+  font-size: 44px;
+  margin-bottom: 10px;
+  animation: sa-shake 0.6s ease 0.3s both;
 }
-@keyframes ql-shake {
+@keyframes sa-shake {
   0%, 100% { transform: rotate(0deg); }
-  20% { transform: rotate(-12deg); }
-  40% { transform: rotate(12deg); }
-  60% { transform: rotate(-8deg); }
-  80% { transform: rotate(8deg); }
+  20% { transform: rotate(-10deg); }
+  40% { transform: rotate(10deg); }
+  60% { transform: rotate(-6deg); }
+  80% { transform: rotate(6deg); }
 }
 .ql-sweetalert-title {
   font-size: 18px;
@@ -1032,8 +1047,8 @@
   box-shadow: 0 4px 15px var(--ql-accent-glow);
 }
 .ql-sweetalert-btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px var(--ql-accent-glow);
+  box-shadow: 0 6px 20px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.12);
+  filter: brightness(1.15);
 }
 .ql-sweetalert-btn-secondary {
   background: rgba(255,255,255,0.06);
@@ -1080,19 +1095,19 @@
 
 /* ===== LIGHT MODE ===== */
 #ql-floating.ql-light {
-  --ql-bg: #f1f5f9;
+  --ql-bg: #f0f9ff;
   --ql-bg-elevated: #ffffff;
   --ql-bg-surface: #f8fafc;
-  --ql-bg-hover: #e2e8f0;
-  --ql-border: rgba(15,23,42,0.12);
-  --ql-border-hover: rgba(15,23,42,0.22);
-  --ql-text-primary: #0f172a;
-  --ql-text-secondary: #475569;
-  --ql-text-muted: #94a3b8;
+  --ql-bg-hover: #e0f2fe;
+  --ql-border: rgba(14,165,233,0.15);
+  --ql-border-hover: rgba(14,165,233,0.28);
+  --ql-text-primary: #0c4a6e;
+  --ql-text-secondary: #0284c7;
+  --ql-text-muted: #7dd3fc;
   --ql-accent: #0ea5e9;
-  --ql-accent-hover: #06b6d4;
+  --ql-accent-hover: #0284c7;
   --ql-accent-subtle: rgba(14,165,233,0.10);
-  --ql-accent-glow: rgba(14,165,233,0.18);
+  --ql-accent-glow: rgba(14,165,233,0.20);
   --ql-success: #10b981;
   --ql-success-bg: rgba(16,185,129,0.10);
   --ql-warning: #d97706;
@@ -1166,7 +1181,7 @@
 .ql-buy-btn:hover {
   background: var(--ql-accent);
   color: #fff;
-  box-shadow: 0 4px 16px var(--ql-accent-glow);
+  box-shadow: 0 4px 16px var(--ql-accent-glow), 0 0 30px rgba(14,165,233,0.12);
 }
 
 .ql-pay-section { padding: 0; }
@@ -1311,6 +1326,7 @@
 .ql-pkg-select-btn:hover {
   background: var(--ql-accent);
   color: #fff;
+  box-shadow: 0 0 16px var(--ql-accent-glow);
 }
 
 .ql-selected-pkg {
@@ -1404,8 +1420,8 @@
   font-family: inherit;
 }
 .ql-confirm-pay-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px var(--ql-accent-glow);
+  box-shadow: 0 8px 24px var(--ql-accent-glow), 0 0 40px rgba(14,165,233,0.15);
+  filter: brightness(1.15);
 }
 .ql-confirm-pay-btn:disabled {
   opacity: 0.7;
@@ -1463,7 +1479,7 @@
 }
 .ql-attach-btn:hover {
   background: var(--ql-accent-subtle);
-  border-color: rgba(14,165,233,0.3);
+  border-color: var(--ql-accent);
   color: var(--ql-accent);
 }
 .ql-attach-count {
@@ -1580,24 +1596,21 @@
   gap: 6px;
   width: 100%;
   padding: 10px 16px;
-  margin-top: 8px;
+  margin-top: 6px;
   border: 1px solid rgba(248,113,113,0.2);
-  border-radius: var(--ql-radius-sm);
-  background: linear-gradient(135deg, rgba(248,113,113,0.08), rgba(248,113,113,0.04));
+  border-radius: 20px;
+  background: rgba(248,113,113,0.06);
   color: #f87171;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   font-family: inherit;
   cursor: pointer;
   transition: all var(--ql-transition);
 }
 .ql-watermark-btn:hover {
-  background: linear-gradient(135deg, rgba(248,113,113,0.15), rgba(248,113,113,0.08));
-  border-color: rgba(248,113,113,0.35);
-  box-shadow: 0 0 20px -4px rgba(248,113,113,0.2);
-  transform: translateY(-1px);
+  background: rgba(248,113,113,0.12);
+  border-color: rgba(248,113,113,0.4);
 }
-.ql-watermark-btn:active { transform: scale(0.98); }
 .ql-watermark-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 /* ===== SHIELD MODE BUTTON ===== */
@@ -1621,11 +1634,9 @@
 }
 .ql-shield-btn:hover {
   background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(14,165,233,0.08));
-  border-color: rgba(14,165,233,0.35);
-  box-shadow: 0 0 20px -4px rgba(14,165,233,0.2);
-  transform: translateY(-1px);
+  border-color: var(--ql-accent);
+  box-shadow: 0 0 24px -4px var(--ql-accent-glow);
 }
-.ql-shield-btn:active { transform: scale(0.98); }
 .ql-shield-btn.ql-shield-active {
   background: linear-gradient(135deg, rgba(52,211,153,0.12), rgba(52,211,153,0.06));
   border-color: rgba(52,211,153,0.3);
@@ -1634,7 +1645,7 @@
 .ql-shield-btn.ql-shield-active:hover {
   background: linear-gradient(135deg, rgba(52,211,153,0.18), rgba(52,211,153,0.1));
   border-color: rgba(52,211,153,0.45);
-  box-shadow: 0 0 20px -4px rgba(52,211,153,0.2);
+  box-shadow: 0 0 24px -4px rgba(16,185,129,0.25);
 }
 
 /* ===== SHIELD OVERLAY (injected on Lovable chat input) ===== */
@@ -1667,14 +1678,14 @@
   color: var(--ql-accent);
   font-size: 13px;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   text-align: center;
   letter-spacing: 0.02em;
 }
 .ql-shield-overlay-sub {
   color: #71717a;
   font-size: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 @keyframes ql-shield-pulse {
   0%, 100% { border-color: rgba(14,165,233,0.3); box-shadow: 0 0 40px -8px rgba(14,165,233,0.25); }
@@ -1688,12 +1699,9 @@
 /* ===== TABS SYSTEM (Floating Popup) ===== */
 .ql-tabs {
   display: flex;
-  gap: 4px;
+  gap: 0;
   margin-bottom: 10px;
-  padding: 3px;
-  background: var(--ql-bg-surface);
-  border-radius: var(--ql-radius-sm);
-  border: 1px solid var(--ql-border);
+  border-bottom: 1px solid var(--ql-border);
 }
 .ql-tab {
   flex: 1;
@@ -1701,19 +1709,19 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
-  padding: 7px 10px;
+  padding: 10px 10px 8px;
   border: none;
-  border-radius: 7px;
+  border-bottom: 2px solid transparent;
   background: transparent;
   color: var(--ql-text-muted);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   font-family: inherit;
   transition: all var(--ql-transition);
 }
-.ql-tab:hover { background: rgba(255,255,255,0.04); color: var(--ql-text-secondary); }
-.ql-tab.ql-tab-active { background: var(--ql-accent-subtle); color: var(--ql-accent); border: 1px solid rgba(14,165,233,0.2); }
+.ql-tab:hover { color: var(--ql-text-secondary); }
+.ql-tab.ql-tab-active { color: var(--ql-accent); border-bottom-color: var(--ql-accent); font-weight: 600; }
 .ql-tab-badge {
   display: inline-flex;
   align-items: center;
@@ -1722,10 +1730,10 @@
   height: 16px;
   padding: 0 4px;
   border-radius: 8px;
-  background: var(--ql-accent);
-  color: #fff;
+  background: var(--ql-accent-subtle);
+  color: var(--ql-accent);
   font-size: 9px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* ===== CHAT HISTORY (Floating Popup) ===== */
@@ -1743,10 +1751,10 @@
   padding: 4px 0;
 }
 .ql-chat-bubble {
-  padding: 10px 12px;
-  margin: 6px 0;
-  border-radius: var(--ql-radius-sm);
-  background: var(--ql-bg-surface);
+  padding: 10px 14px;
+  margin: 4px 0;
+  border-radius: 18px;
+  background: var(--ql-bg-elevated);
   border: 1px solid var(--ql-border);
   color: var(--ql-text-primary);
   font-size: 11px;
@@ -1820,17 +1828,17 @@
   padding: 10px 16px;
   margin-top: 6px;
   border: 1px solid var(--ql-border);
-  border-radius: var(--ql-radius-sm);
-  background: var(--ql-accent-subtle);
+  border-radius: 20px;
+  background: transparent;
   color: var(--ql-accent);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   font-family: inherit;
   transition: all var(--ql-transition);
 }
 .ql-native-chat-btn:hover {
-  background: var(--ql-accent-glow);
+  background: var(--ql-accent-subtle);
   border-color: var(--ql-accent);
 }
 
@@ -1842,11 +1850,11 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  background: linear-gradient(135deg, #0ea5e9, var(--ql-accent));
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4);
   color: #fff;
   font-size: 10px;
   font-weight: 700;
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
   padding: 3px 10px;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(14,165,233,0.4);
@@ -1872,7 +1880,7 @@
   color: var(--ql-accent);
   font-size: 12px;
   font-weight: 600;
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
   z-index: 99999;
@@ -1922,7 +1930,7 @@
   gap: 8px;
   padding: 10px 20px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4);
   color: #fff;
   font-size: 13px;
   font-weight: 600;
@@ -1950,7 +1958,7 @@
   border-radius: 12px;
   font-size: 13px;
   font-weight: 600;
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
   opacity: 0;
   transition: all 0.3s ease;
   pointer-events: none;
@@ -1988,7 +1996,7 @@
   pointer-events: none;
 }
 .ql-drag-overlay-inner {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #c4b5fd;
@@ -2002,81 +2010,74 @@
 /* ===== LEGACY BRAND REFRESH ===== */
 #ql-floating {
   background:
-    radial-gradient(circle at 12% -10%, rgba(56,189,248,.24), transparent 34%),
-    radial-gradient(circle at 92% 8%, rgba(37,99,235,.26), transparent 32%),
-    linear-gradient(145deg, rgba(6,21,41,.98), rgba(7,28,54,.96));
-  border-color: rgba(56,189,248,.28);
-  box-shadow: 0 24px 80px -12px rgba(0,0,0,.62), 0 0 42px rgba(56,189,248,.16), inset 0 1px 0 rgba(255,255,255,.06);
+    radial-gradient(circle at 12% -10%, rgba(14,165,233,.22), transparent 34%),
+    radial-gradient(circle at 92% 8%, rgba(56,189,248,.18), transparent 32%),
+    linear-gradient(145deg, rgba(8,14,26,.98), rgba(12,26,46,.96));
+  border-color: rgba(14,165,233,.28);
+  box-shadow: 0 24px 80px -12px rgba(0,0,0,.62), 0 0 42px rgba(14,165,233,.16), inset 0 1px 0 rgba(255,255,255,.06);
 }
 #ql-floating::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: .38;
+  opacity: .25;
   background:
-    radial-gradient(ellipse at 20% 15%, rgba(34,211,238,.25), transparent 28%),
-    radial-gradient(ellipse at 80% 90%, rgba(59,130,246,.20), transparent 34%),
-    repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 1px, transparent 1px 18px);
-  animation: ql-master-wave 9s ease-in-out infinite alternate;
+    radial-gradient(ellipse at 20% 15%, rgba(14,165,233,.15), transparent 28%),
+    radial-gradient(ellipse at 80% 90%, rgba(56,189,248,.10), transparent 34%);
 }
-@keyframes ql-master-wave { from { transform: translate3d(-8px,-4px,0) scale(1); } to { transform: translate3d(8px,4px,0) scale(1.02); } }
 .ql-brand, .ql-header-left { display:flex; align-items:center; gap:8px; }
-.ql-brand-logo, .ql-title-logo { width:24px; height:24px; border-radius:8px; object-fit:cover; box-shadow:0 0 18px rgba(56,189,248,.42); }
+.ql-brand-logo, .ql-title-logo { width:24px; height:24px; border-radius:8px; object-fit:cover; box-shadow:0 0 18px rgba(14,165,233,.38); }
 .ql-title-logo { width:28px; height:28px; }
 .ql-license-gate, .ql-profile-card, .ql-template-card, .ql-input-area, .ql-notif-panel, .ql-history-panel {
-  background: linear-gradient(180deg, rgba(8,32,61,.82), rgba(6,21,41,.74));
-  border-color: rgba(56,189,248,.22);
+  background: linear-gradient(180deg, rgba(8,14,26,.82), rgba(12,26,46,.74));
+  border-color: rgba(14,165,233,.22);
 }
 #ql-validate-btn, #ql-send-btn, .ql-buy-btn, .ql-primary-btn {
-  background: linear-gradient(135deg, #0ea5e9, #06b6d4 55%, #67e8f9) !important;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4 55%, #22d3ee) !important;
   color:#ffffff !important;
-  box-shadow: 0 14px 36px rgba(37,99,235,.28), 0 0 24px rgba(34,211,238,.16);
+  box-shadow: 0 14px 36px rgba(14,165,233,.28), 0 0 24px rgba(34,211,238,.16);
 }
 
-/* ===== SUHAIB ABID BRAND REFRESH ===== */
+/* ===== SUHAIB ABID EXTENSION OVERRIDES ===== */
 :root {
   --ql-bg: #080e1a !important;
   --ql-bg-elevated: #0c1a2e !important;
   --ql-bg-surface: #11223a !important;
   --ql-bg-hover: #1a3050 !important;
-  --ql-border: rgba(14,165,233,0.28) !important;
-  --ql-border-hover: rgba(56,189,248,0.50) !important;
+  --ql-border: rgba(14,165,233,0.20) !important;
+  --ql-border-hover: rgba(56,189,248,0.40) !important;
   --ql-text-primary: #f0f9ff !important;
   --ql-text-secondary: #7dd3fc !important;
   --ql-text-muted: #6b8fae !important;
   --ql-accent: #0ea5e9 !important;
   --ql-accent-hover: #38bdf8 !important;
-  --ql-accent-glow: rgba(14,165,233,0.38) !important;
-  --ql-accent-subtle: rgba(14,165,233,0.15) !important;
+  --ql-accent-glow: rgba(14,165,233,0.30) !important;
+  --ql-accent-subtle: rgba(14,165,233,0.12) !important;
   --ql-success: #10b981 !important;
   --ql-success-bg: rgba(16,185,129,0.1) !important;
   --ql-warning: #f59e0b !important;
   --ql-warning-bg: rgba(245,158,11,0.1) !important;
   --ql-danger: #f43f5e !important;
   --ql-danger-bg: rgba(244,63,94,0.1) !important;
-  --ql-radius: 16px !important;
-  --ql-radius-sm: 10px !important;
-  --ql-radius-xs: 8px !important;
-  --ql-shadow: 0 24px 80px -12px rgba(0,0,0,0.7), 0 0 0 1px var(--ql-border) !important;
-  --ql-shadow-hover: 0 32px 100px -12px rgba(0,0,0,0.8), 0 0 0 1px var(--ql-border-hover) !important;
-  --ql-glass: rgba(8,14,26,0.85) !important;
+  --ql-radius: 24px !important;
+  --ql-radius-sm: 14px !important;
+  --ql-radius-xs: 10px !important;
+  --ql-shadow: 0 8px 40px -8px rgba(0,0,0,0.5), 0 0 0 1px var(--ql-border), 0 0 30px -6px rgba(14,165,233,0.08) !important;
+  --ql-shadow-hover: 0 12px 60px -8px rgba(0,0,0,0.6), 0 0 0 1px var(--ql-border-hover), 0 0 40px -8px rgba(14,165,233,0.12) !important;
+  --ql-glass: rgba(8,14,26,0.80) !important;
 }
 
 #ql-floating {
-  background:
-    radial-gradient(circle at 12% -10%, rgba(14,165,233,.20), transparent 34%),
-    radial-gradient(circle at 92% 8%, rgba(56,189,248,.16), transparent 32%),
-    linear-gradient(145deg, #080e1a, #0c1a2e 58%, #080e1a) !important;
+  background: var(--ql-glass) !important;
   border-color: var(--ql-border) !important;
   box-shadow: var(--ql-shadow) !important;
 }
 
 #ql-floating::before {
   background:
-    radial-gradient(ellipse at 20% 15%, rgba(14,165,233,.20), transparent 28%),
-    radial-gradient(ellipse at 80% 90%, rgba(56,189,248,.16), transparent 34%),
-    repeating-linear-gradient(135deg, rgba(14,165,233,.06) 0 1px, transparent 1px 18px) !important;
+    radial-gradient(ellipse at 20% 15%, rgba(14,165,233,.15), transparent 28%),
+    radial-gradient(ellipse at 80% 90%, rgba(56,189,248,.10), transparent 34%) !important;
 }
 
 .ql-brand-logo,
